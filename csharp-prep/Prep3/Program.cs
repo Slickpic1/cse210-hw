@@ -61,7 +61,7 @@ class Program
             string reply = Console.ReadLine();
             if (reply == "y")
             {
-                Console.WriteLine($"==================");
+                Console.WriteLine($"==============================");
                 playAgain = true;
             }
             else
