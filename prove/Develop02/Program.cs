@@ -15,11 +15,11 @@ class Program
         Console.WriteLine("3. Save the Journal to a File");
         Console.WriteLine("4. Load Journal from File");
         Console.WriteLine("5. Quit Program");
+        Console.Write($"Enter Number: ");
     }
     static void UserIO()
     {
         //Get command from user
-        Console.Write($"Enter Number: ");
         string userResponse = Console.ReadLine();
         int userNumber = int.Parse(userResponse);
 
@@ -37,12 +37,12 @@ class Program
         else if (userNumber == 3)
         {
             //Save journal to file
-            Console.WriteLine($"Save journal to file");
+            journal.SaveJournal();
         }
         else if (userNumber == 4)
         {
             //Load journal
-            Console.WriteLine($"Load journal");
+            journal.LoadJournal();
         }
         else
         {
@@ -57,21 +57,11 @@ class Program
 
         while(running)
         {
-            //Clear Console
-            Console.Clear();
-            
             //Display Interface
             DisplayInterface();
 
             //Run program
             UserIO();
         }
-        
-
-
-        
-        
-        
-         
     }
 }

@@ -1,36 +1,21 @@
+using System.Diagnostics;
 namespace Develop02;
 public class Journal
 {
-    public List<string> prompts = new List<string>();
-    public List<Entry> Entries = new List<Entry>();
-    public Entry entry = new Entry();
-
-    public Journal()
-    {
-        //Construct our Prompts
-        ConstructPrompts();
-        
-    }
-
-    
-    public void ConstructPrompts()
-    {
-        prompts.Add("Who was the most interesting person I saw today?");
-        prompts.Add("What was the strongest emotion I felt today?");
-        prompts.Add("How much homework did I complete today?");
-        prompts.Add("What did I enjoy about today?");
-        prompts.Add("Did you see the Skin Man again?");
-    }
+    public Prompt prompt = new Prompt();
+    public static List<Entry> Entries = new List<Entry>();
+    public string fileName;
 
     public void WriteEntry()
     {
-        //Choose random number 
-        int length = this.prompts.Count;
-        Random randomGenerator = new Random();
-        int number = randomGenerator.Next(1,length);
+        //Create new Entry
+        var entry = new Entry();
+
+        //Clear Console
+        Console.Clear();
 
         //Display Prompt
-        entry.prompt = prompts[number];
+        entry.prompt = prompt.SelectPrompt();
         Console.WriteLine($"Prompt: {entry.prompt}");
 
         //Log response
@@ -39,24 +24,45 @@ public class Journal
         //Add Entry to list of entries
         Entries.Add(entry);
 
+        //Clear Console
+        Console.Clear();
+
+        Console.WriteLine("Response Recorded!");
+        Console.WriteLine("");
+
     }
 
     public void DisplayJournal()
     {
+        //Clear Console
+        Console.Clear();
+
         //Display all journal entries
         foreach (Entry e in Entries)
         {
             e.DisplayEntry();
         }
+
+        //Clear Entries once user is done
+        Console.WriteLine($"");
+        Console.Write("Press 'Enter' to return.");
+        Console.ReadLine();
+
+        //Clear Console (again)
+        Console.Clear();
     }
 
     public void LoadJournal()
     {
-
+        Console.WriteLine($"");
+        Console.Write($"Enter the name of the file you wish to load: ");
+        fileName = Console.ReadLine();
     }
 
     public void SaveJournal()
     {
-
+        Console.WriteLine($"");
+        Console.Write($"Enter the name of the file you wish to save to: ");
+        fileName = Console.ReadLine();
     }
 }
