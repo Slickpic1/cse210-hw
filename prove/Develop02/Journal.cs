@@ -1,4 +1,7 @@
 using System.Diagnostics;
+using System.IO;
+using Newtonsoft.Json;
+
 namespace Develop02;
 public class Journal
 {
@@ -57,6 +60,8 @@ public class Journal
         Console.WriteLine($"");
         Console.Write($"Enter the name of the file you wish to load: ");
         fileName = Console.ReadLine();
+        string json = File.ReadAllText(fileName);
+        var Entries = JsonConvert.DeserializeObject<List<Journal>>(json);
     }
 
     public void SaveJournal()
@@ -64,5 +69,8 @@ public class Journal
         Console.WriteLine($"");
         Console.Write($"Enter the name of the file you wish to save to: ");
         fileName = Console.ReadLine();
+        string json = JsonConvert.SerializeObject(Entries);
+        File.WriteAllText(fileName, json);
+
     }
 }
