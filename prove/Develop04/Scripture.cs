@@ -16,8 +16,6 @@ public class Scripture
 
         foreach (string temp in things)
         {
-            Console.WriteLine(temp);
-            Console.WriteLine(",");
             Word word = new Word(temp);
             Words.Add(word);
         }
@@ -31,7 +29,6 @@ public class Scripture
 
     private int WordsToErase()
     {
-        Console.WriteLine($"Words To Erase funct");
         //Check to see how many words are left
         Random randomGenerator = new Random();
         int wordsLeft = _scriptureLength - _numBlankedWords;
@@ -60,7 +57,7 @@ public class Scripture
     {
         //Find words to erase
         int wordsToErase = WordsToErase();
-        Console.WriteLine($"wordsToErase = {wordsToErase}");
+        //Console.WriteLine($"wordsToErase = {wordsToErase}");
 
         //"Erase" Random Words
         int i = 0;
@@ -72,7 +69,7 @@ public class Scripture
             int number = rand.Next(0,_scriptureLength);
             //Console.WriteLine($"number: {number}");
             Word word = Words[number];
-            word.DisplayWord();
+            //word.DisplayWord();
 
             //Check to see if it's already blanked
             if (!word._isHidden)

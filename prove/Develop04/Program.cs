@@ -29,10 +29,8 @@ class Program
 
         while (!scrip.IsAllBlank() && running)
         {
-            Console.WriteLine($"Here");
             //Erase words
             scrip.EraseWords();
-            DisplayPrompt(scrip);
             running = DisplayPrompt(scrip);
             
         }
