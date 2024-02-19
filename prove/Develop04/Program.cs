@@ -2,12 +2,39 @@ using System;
 
 class Program
 {
+    static bool DisplayPrompt(Scripture scrip)
+    {
+        scrip.DisplayScripture();
+        Console.WriteLine($"Press enter to continue or type 'quit' to finish:");
+        string response = Console.ReadLine();
+
+        if (response == "quit")
+        {
+            return false;
+        }
+        else
+        {
+            Console.Clear();
+            return true;
+        }
+    }
+
     static void Main(string[] args)
     {
-        var ref1 = new Reference("John","3","6","9");
-        ref1.DisplayReference();
+        //Run the program
 
-        var word1 = new Words(true, "mop");
-        word1.DisplayWord();
+        //Initialize and display the scripture
+        Scripture scrip = new Scripture();
+        bool running = DisplayPrompt(scrip);
+
+        while (!scrip.IsAllBlank() && running)
+        {
+            Console.WriteLine($"Here");
+            //Erase words
+            scrip.EraseWords();
+            DisplayPrompt(scrip);
+            running = DisplayPrompt(scrip);
+            
+        }
     }
 }

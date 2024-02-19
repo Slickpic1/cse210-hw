@@ -1,10 +1,10 @@
-public class Words
+public class Word
 {
     public bool _isHidden;
     private string _text;
     private string _hiddenText;
 
-    public Words(string text)
+    public Word(string text)
     {
         _isHidden = false;
         _text = text;
