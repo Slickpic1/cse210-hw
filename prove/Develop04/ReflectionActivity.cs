@@ -2,6 +2,7 @@ using System.Diagnostics;
 
 class ReflectionActivity : Activity
 {
+    Random rand = new Random();
     private List<string> reflectPrompts = new List<string>();
     private List<string> reflectQuestions = new List<string>();
     public ReflectionActivity() : base()
@@ -27,7 +28,30 @@ class ReflectionActivity : Activity
 
     private void Reflect()
     {
+        
+        Console.WriteLine("Consider the following prompt: \n");
+        int randomNum = rand.Next(0,reflectPrompts.Count());
+        Console.Write($" --- {reflectPrompts[randomNum]} --- \n\n");
+        Console.WriteLine("When you have something in mind, press 'Enter' to continue.");
+        Console.ReadLine();
+        Console.Write("\n");
 
+        Console.WriteLine("Now ponder on each of the following questions as they related to this experience.");
+        Console.Write("You may begin in: ");
+        Console.Write("\n");
+        DoCountdown(5);
+        Console.Clear();
+        this._timer += 5;
+
+        while (_timer < _duration)
+        {
+            int random = rand.Next(0,reflectQuestions.Count());
+            Console.Write($"{reflectQuestions[random]} ");
+            DoSpinner(8);
+            Console.Write("\n");
+            this._timer += 5;
+
+        }
     }
 
     private void InitializePrompts()

@@ -13,7 +13,7 @@ class Program
         Console.Write($"Select a choice from the menu: ");
     }
 
-    static void ChooseActivity()
+    static bool ChooseActivity()
     {
         string userChoice = Console.ReadLine();
         int choice = int.Parse(userChoice);
@@ -37,13 +37,13 @@ class Program
 
             //Quit
             case 4:
-                break;
+                return false;
 
             default:
                 break;
         }
 
-        return;
+        return true;
     }
 
     static void Test()
@@ -62,7 +62,13 @@ class Program
     {
         //Test();
 
-        DisplayMenu();
-        ChooseActivity();
+        
+        bool doLoop = true;
+        while(doLoop)
+        {
+            DisplayMenu();
+            doLoop = ChooseActivity();
+        }
+        
     }
 }

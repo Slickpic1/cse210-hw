@@ -41,7 +41,8 @@ public class Activity
             foreach (char q in spinChars)
             {
                 Console.Write(q);
-                PauseClear();
+                Thread.Sleep(250);
+                Console.Write("\b \b");
             }
 
             //Update our current time
@@ -49,6 +50,15 @@ public class Activity
         }
     }
 
+    protected void DoCountdown(int time)
+    {
+        for (int i = time; i > 0; i--)
+        {
+            Console.Write(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+        }
+    }
     protected void DoDots(int time)
     {
         //Log our current time and run loop for that time
@@ -63,7 +73,8 @@ public class Activity
                 Thread.Sleep(500);
             }
 
-            PauseClear();
+            Thread.Sleep(500);
+            Console.Write("\b\b\b   \b\b\b");
 
             //Update our current time
             currentTime = DateTime.Now;
@@ -103,6 +114,9 @@ public class Activity
 
     public void OpenMessage()
     {
+
+        Console.Clear();
+
         //Display the welcome message
         Console.WriteLine($"Welcome to the {_activityType}.");
         Console.WriteLine($"");  //Blank space
@@ -113,14 +127,24 @@ public class Activity
         Console.Write($"How long, in seconds, would you like your session? ");
         string userInput = Console.ReadLine();
         _duration = int.Parse(userInput);
+
+        //Clear Console and tell user to get ready
+        Console.Clear();
+        Console.Write("Get Ready");
+        DoDots(5);
+        this._timer += 5;
+        Console.WriteLine("");  //Newline
+        Console.WriteLine("");  //Newline
+
     }
 
     protected void ClosingMessage()
     {
         //Congratulate user for completing
+        Console.Write("\n");
         Console.WriteLine($"Well done!!");
         Console.WriteLine($"");
-        Console.WriteLine($"You have completed another {_timer} second(s) of the {_activityType}");
+        Console.WriteLine($"You have completed another {_duration} second(s) of the {_activityType}.");
 
         //Pause for some time and run animation for effect
         DoSpinner(6);
