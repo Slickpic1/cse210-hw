@@ -45,24 +45,8 @@ class Program
 
         return true;
     }
-
-    static void Test()
-    {
-        //Activity test = new Activity();
-        //Test out the Animations
-        //test.DotDotDot(6);
-        //Console.WriteLine();
-        //test.Spinner(6);
-        //Console.WriteLine();
-        //test.LoadingBar(6);
-
-
-    }
     static void Main(string[] args)
     {
-        //Test();
-
-        
         bool doLoop = true;
         while(doLoop)
         {
