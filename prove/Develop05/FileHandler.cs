@@ -10,7 +10,7 @@ public class FileHandler
     public FileHandler(){}
     public void GetSetFileName()
     {
-        Console.Write("Please enter the name of the file you wish to save to: ");
+        Console.Write("Please enter the name of the file you wish to access: ");
         fileName = Console.ReadLine(); 
     }
 

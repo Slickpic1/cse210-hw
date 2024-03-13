@@ -1,6 +1,5 @@
 public class EternalGoal : Goal
 {
-    
     public EternalGoal() : base()
     {
         goalType = "Eternal Goal"; //Can this be abstracted more?
@@ -15,6 +14,6 @@ public class EternalGoal : Goal
     {
         Console.Write("[ ] ");
         base.DisplayGoal();
-        Console.Write("\n");  //Newline
+        Console.Write("\n");
     }
 }

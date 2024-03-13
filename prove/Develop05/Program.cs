@@ -5,6 +5,8 @@ class Program
     public static List<Goal> goalList = new List<Goal>();
     public static int totalPoints = 0;
     public static FileHandler fileHandler = new FileHandler();
+    public static bool savedRecently = false;
+
     static void DisplayMenu()
     {
         Console.WriteLine("Menu Options: ");  
@@ -51,6 +53,8 @@ class Program
                 break;
 
             default:
+                Console.WriteLine("Error: input not recognized!");
+                savedRecently = false;
                 break;
         }
     }
@@ -157,6 +161,7 @@ class Program
         {
             case 1:
                 //Create new goal
+                savedRecently = false; //Save first incase input fails
                 DisplayGoalMenu();
                 GoalChoice();
                 break;
@@ -169,6 +174,7 @@ class Program
             case 3:
                 //Save Goals
                 SaveGoals();
+                savedRecently = true;
                 break;
 
             case 4:
@@ -179,10 +185,45 @@ class Program
             case 5:
                 //Record Event
                 RecordEvent();
+                savedRecently = false;
+                break;
+
+            case 6:
+                //Quit
+                isRunning = false;
+                if (!savedRecently)
+                {
+                    Console.WriteLine("You are about to exit w/ out saving!");
+                    Console.Write("Would you like to save?");
+                    string userResponse = Console.ReadLine();
+                    bool validResponse = false;
+
+                    //Loop until we get a valid response
+                    while (!validResponse)
+                    {
+                        switch(userResponse)
+                        {
+                            case "y":
+                                SaveGoals();
+                                savedRecently = true;
+                                validResponse = true;
+                                break;
+
+                            case "n":
+                                savedRecently = true;
+                                validResponse = true;
+                                break;
+
+                            default:
+                                Console.WriteLine("Error: input not recognized!");
+                                break;
+                        }
+                    }
+                }
                 break;
 
             default:
-                isRunning = false;
+                Console.WriteLine("Error: input not recognized!");
                 break;
 
         }
@@ -209,22 +250,22 @@ class Program
 // Things to test/ check
 //   1. Does every function on the menu work the way it should?              [x]
 //   2. Is the output the way it should be                                   [x]
-//   3. Is there a way to clean up the code a bit more?                      [ ]
+//   3. Is there a way to clean up the code a bit more?                      [x]
 //
 // Things to add:
 //   1. Success/Fail messages for the file I/O                               [ ]
 //   2. Wait times maybe?                                                    [ ]
 //
 // Things to fix:
-//   1. Display for Record event                                             [ ]
-//   2. Enter filename spacing                                               [ ]
+//   1. Display for Record event                                             [x]
+//   2. Enter filename spacing                                               [x]
 //
 // Ideas:
-//   1. File I/O checking
-//   2. Adding to files/ appending to existing files
+//   1. File I/O checking                                                    [ ]
+//   2. Adding to files/appending to existing files                          [ ]
 //   3. Checking if new data has been saved or not and asking if they want
-//      to save                                                              [ ]
+//      to save                                                              [x]
 //   4. Ability to modify list                                               [ ]
 //   5. Goals that "lock" when completed                                     [ ]
-//   6. 
+//   6. Pull from list of files or read from folder                          [ ]
 ////////////////////////////////////////////////////////////////////////////////
