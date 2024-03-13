@@ -2,16 +2,12 @@ using System;
 
 class Program
 {
-    //Not sure if this should be static or not...
-    public static List<Goal> goalList = new List<Goal>();  //Should this be here
-    public static int totalPoints = 0;  //Might need to change later
-    //Initialize fileHandler class
+    public static List<Goal> goalList = new List<Goal>();
+    public static int totalPoints = 0;
     public static FileHandler fileHandler = new FileHandler();
     static void DisplayMenu()
     {
-        //Need to display points first
-
-        Console.WriteLine("Menu Options: ");  //Could potentially compact this, but would make more obscure
+        Console.WriteLine("Menu Options: ");  
         Console.WriteLine("  1. Create New Goal");
         Console.WriteLine("  2. List Goals");
         Console.WriteLine("  3. Save Goals");
@@ -84,7 +80,7 @@ class Program
         }
 
         //Find out what goal they accomplished
-        Console.Write("Which goal did you accompish");
+        Console.Write("Which goal did you accompish? ");
         int userInput = int.Parse(Console.ReadLine());
         userInput--; //Reduce the input by 1 for indexing
 
@@ -104,6 +100,8 @@ class Program
 
         //Save score and list of goals
         fileHandler.ExportToFile(totalPoints,goalList);
+
+        Console.WriteLine("Goals successfuly saved!");
     }
 
     static void LoadGoals()
@@ -117,7 +115,7 @@ class Program
         //Set first of rawData to totalPoints
         totalPoints = int.Parse(rawData[0]);
 
-        //Run through other data and sort out
+        //Run through other data and sort out (skip first one)
         foreach (string goals in rawData.Skip(1))
         {
             //Parse out first value to determine type
@@ -149,7 +147,7 @@ class Program
     static bool MenuChoice()
     {
         //Get user input
-        Console.Write("Select a choice from the menu:");
+        Console.Write("Select a choice from the menu: ");
         string input = Console.ReadLine();
         int userChoice = int.Parse(input);
 
@@ -191,37 +189,6 @@ class Program
         return isRunning;
     }
 
-    //This is a test function meant to test various features. Remove when done
-    static void Test()
-    {
-        //int testPoints = 12;
-        //string testTitle = "Give a talk";
-        //string testDesc = "Don't be bad";
-
-        string testValues = $"Simple Goal:Be Good~Don't be bad~10~~true";
-
-        Console.Clear();
-
-        //SimpleGoal goal1 = new SimpleGoal();
-        //goal1.DisplayGoal();
-
-        ChecklistGoal goal2 = new ChecklistGoal();
-        goal2.DisplayGoal();
-
-        SimpleGoal goal1 = new SimpleGoal(testValues);
-        goal1.DisplayGoal();
-
-        goalList.Add(goal1);
-        goalList.Add(goal2);
-
-        //Test file writing
-        string testExport = goal1.Export();
-        fileHandler.ExportToFile(100,goalList);
-
-        ListGoals();
-
-    }
-
     static void Main(string[] args)
     {
         //Run through our menu and then loop indef til user input
@@ -233,6 +200,31 @@ class Program
             DisplayMenu();
             isRunning = MenuChoice();
         }
-        //Test();
     }
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// Ideas/things to fix
+////////////////////////////////////////////////////////////////////////////////
+// Things to test/ check
+//   1. Does every function on the menu work the way it should?              [x]
+//   2. Is the output the way it should be                                   [x]
+//   3. Is there a way to clean up the code a bit more?                      [ ]
+//
+// Things to add:
+//   1. Success/Fail messages for the file I/O                               [ ]
+//   2. Wait times maybe?                                                    [ ]
+//
+// Things to fix:
+//   1. Display for Record event                                             [ ]
+//   2. Enter filename spacing                                               [ ]
+//
+// Ideas:
+//   1. File I/O checking
+//   2. Adding to files/ appending to existing files
+//   3. Checking if new data has been saved or not and asking if they want
+//      to save                                                              [ ]
+//   4. Ability to modify list                                               [ ]
+//   5. Goals that "lock" when completed                                     [ ]
+//   6. 
+////////////////////////////////////////////////////////////////////////////////

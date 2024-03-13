@@ -6,29 +6,8 @@ public class Goal
     protected string goalDesc;
     protected string goalType;
 
-    //Case where no data is input
+    //Case where no data is input, we need to get values from user
     protected Goal()
-    {
-        GetUserInfo();
-    }
-
-    //Case where we construct from file inputs
-    protected Goal(string values)
-    {
-        //Split the other string based on '~' delimiter
-        var goalValues = values.Split(DELIMITER);
-        goalTitle = goalValues[0];   //Does this need a 'this' prefix?
-        goalDesc = goalValues[1];
-        pointValue = int.Parse(goalValues[2]);
-
-    }
-
-    public virtual int GetPoints()
-    {
-        return pointValue;
-    }
-
-    public virtual void GetUserInfo()  //Maybe just put into first case
     {
         Console.Write("What is the name of your goal? ");
         this.goalTitle = Console.ReadLine();
@@ -40,17 +19,33 @@ public class Goal
         this.pointValue = int.Parse(Console.ReadLine());
     }
 
-    public string GetGoalTitle()  //Can we make this protected or not?
+    //Case where we construct from file inputs
+    protected Goal(string values)
+    {
+        //Split the other string based on '~' delimiter
+        var goalValues = values.Split(DELIMITER);
+        goalTitle = goalValues[0];   
+        goalDesc = goalValues[1];
+        pointValue = int.Parse(goalValues[2]);
+
+    }
+
+    public virtual int GetPoints()
+    {
+        return pointValue;
+    }
+
+    public string GetGoalTitle()  
     {
         return goalTitle;
     }
 
     public virtual void DisplayGoal()
     {
-        //Potentially need to fix
         Console.Write($"{goalTitle} ({goalDesc}) ");
     }
 
+    //Export goal as one long string (Serialization)
     public virtual string Export()
     {
         return $"{goalType}:{goalTitle}{DELIMITER}{goalDesc}{DELIMITER}{pointValue}";

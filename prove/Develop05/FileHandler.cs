@@ -7,13 +7,11 @@ public class FileHandler
     //This may change in the future, but I'm not sure why/how atm.
     ///////////////////////////////////////////////////////////////////////////////
     private string fileName;
-
     public FileHandler(){}
-
     public void GetSetFileName()
     {
-        Console.WriteLine("Please enter the name of the file you wish to save to: ");
-        fileName = Console.ReadLine(); //Put this into fileHandler
+        Console.Write("Please enter the name of the file you wish to save to: ");
+        fileName = Console.ReadLine(); 
     }
 
     //Do we want to parse the file here or in main?

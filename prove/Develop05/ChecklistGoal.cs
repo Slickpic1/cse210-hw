@@ -12,6 +12,7 @@ public class ChecklistGoal : Goal
         Console.Write("What is the bonus for completing it that many times? ");
         bonusPoints = int.Parse(Console.ReadLine());
         
+        //Default values for first run
         numberCompleted = 0;
         isCompleted = false;  //can they double? or just once
         goalType = "Checklist Goal";
@@ -44,7 +45,6 @@ public class ChecklistGoal : Goal
         {
             return base.GetPoints();
         }
-        
     }
 
     public override void DisplayGoal()

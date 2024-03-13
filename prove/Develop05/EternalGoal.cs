@@ -3,12 +3,11 @@ public class EternalGoal : Goal
     
     public EternalGoal() : base()
     {
-        goalType = "Eternal Goal";
+        goalType = "Eternal Goal"; //Can this be abstracted more?
     }
 
     public EternalGoal(string values) : base(values.Split($"{Goal.DELIMITER}{Goal.DELIMITER}")[0])
     {
-        //Not sure if we need anything here...
         goalType = "Eternal Goal";
     }
 

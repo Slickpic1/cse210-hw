@@ -1,10 +1,11 @@
 public class SimpleGoal : Goal
 {
+    //Goal.goalType = "Simple Goal"; See if we can do this.
     private bool isCompleted;
     public SimpleGoal() : base()
     {
         //Default to false when first initializing
-        this.isCompleted = false;
+        isCompleted = false;
         goalType = "Simple Goal";
     }
 
