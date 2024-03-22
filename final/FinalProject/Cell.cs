@@ -8,17 +8,18 @@ public class Cell
     /////////////////////////////////////////////////////////////////
     
     Random rand = new Random();
-    private bool isTraversable;
-    private string description;
-    private string type;
-    private string mood;
-    private float enemyChanceModifier;
-    private float treasureChanceModifier;
-    private List<Enemy> enemies = new List<Enemy>();
-    private List<Item> items = new List<Item>();
-    private List<Item> treasure = new List<Item>();
+    protected bool isTraversable;
+    protected string description;
+    protected string type;
+    protected string mood;
+    protected float enemyChanceModifier;
+    protected float treasureChanceModifier;
+    protected List<Enemy> enemies = new List<Enemy>();
+    protected List<Item> items = new List<Item>();
+    protected List<Item> treasure = new List<Item>();
     static TxtFileHandler terrainData = new TxtFileHandler("terrainData.txt");  //What does static do
     string[] fileData = terrainData.ImportFromFile();
+    
 
     public Cell()
     {
@@ -34,6 +35,10 @@ public class Cell
         GenerateCellFromFileData(fileData,terrainIndex);
     }
 
+    public string GetCellType()
+    {
+        return type;
+    }
     private void GenerateCellFromFileData(string[] fileData, int terrainIndex)
     {
         //Parse into specific values (see if theres a better way)
