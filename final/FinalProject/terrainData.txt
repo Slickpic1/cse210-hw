@@ -1,1 +1,0 @@
-mountain:rocky outcroppings that sprawl upwards beyond visions edge.:[Mood]:1.0:1.0:False

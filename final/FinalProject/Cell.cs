@@ -8,31 +8,37 @@ public class Cell
     /////////////////////////////////////////////////////////////////
     
     Random rand = new Random();
-    protected bool isTraversable;
-    protected string description;
+    protected bool impassable = false;   //Default value, is this ok, or need to be in the call?
     protected string type;
+    protected string description;
     protected string mood;
-    protected float enemyChanceModifier;
-    protected float treasureChanceModifier;
-    protected List<Enemy> enemies = new List<Enemy>();
-    protected List<Item> items = new List<Item>();
-    protected List<Item> treasure = new List<Item>();
-    static TxtFileHandler terrainData = new TxtFileHandler("terrainData.txt");  //What does static do
-    string[] fileData = terrainData.ImportFromFile();
-    
+    public int[] position{get; set;}
+
+    //To be implemented later, if possible
+    //protected float enemyChanceModifier;
+    //protected float treasureChanceModifier;
+    //protected List<Enemy> enemies = new List<Enemy>();
+    //protected List<Item> items = new List<Item>();
+    //protected List<Item> treasure = new List<Item>();
 
     public Cell()
     {
-        //Choose random terrainIndex
-        int terrainIndex = rand.Next(0,fileData.Length);  //Test to make sure it works
-        GenerateCellFromFileData(fileData,terrainIndex);
+        //Cell with no call data for special cases. Might overwrite in the future
+    }
 
+    //Generate random cell from given list of items
+    public Cell(string[] fileData, int[] position)
+    {
+        int terrainIndex = rand.Next(0,fileData.Length);
+        GenerateCellFromFileData(fileData,terrainIndex);
+        this.position = position;
     }
 
     //This is used when a specific cell is wanted
-    public Cell(int terrainIndex)
+    public Cell(string[] fileData,int terrainIndex, int[] position) //Could be used to just generate cell, might not need other function
     {
         GenerateCellFromFileData(fileData,terrainIndex);
+        this.position = position;
     }
 
     public string GetCellType()
@@ -41,15 +47,12 @@ public class Cell
     }
     private void GenerateCellFromFileData(string[] fileData, int terrainIndex)
     {
-        //Parse into specific values (see if theres a better way)
+        ////Parse into specific values (see if theres a better way)
         string terrain = fileData[terrainIndex];
         var splitData = terrain.Split(":");
         type = splitData[0];
         description = splitData[1];
         mood = splitData[2];
-        enemyChanceModifier = float.Parse(splitData[3]);
-        treasureChanceModifier = float.Parse(splitData[4]);
-        isTraversable = bool.Parse(splitData[5]);
     }
 
     public void DescribeCell()
@@ -57,9 +60,29 @@ public class Cell
         Console.Write($"You see {description}");
     }
 
-    public void DescribeAdjacentCell(string orientation)
+    public void DescribeAdjacentCell(string direction, World world)
     {
-        
+        string neighborDesc = $"To the {direction}, you see a ";
+        switch (direction)
+        {
+            case "north":
+                neighborDesc += world.world[position[0]+1,position[1]].GetCellType();
+                break;
+
+            case "south":
+                neighborDesc += world.world[position[0]-1,position[1]].GetCellType();
+                break;
+
+            case "east":
+                neighborDesc += world.world[position[0],position[1]+1].GetCellType();
+                break;
+
+            case "west":
+                neighborDesc += world.world[position[0],position[1]-1].GetCellType();
+                break;
+        }
+
+        Console.WriteLine(neighborDesc + ".");  //Will format this later
     }
 
 

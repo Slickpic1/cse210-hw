@@ -1,0 +1,2 @@
+mountain:rocky outcroppings that sprawl upwards beyond visions edge.:overwhelmed by the sheer size of the steep bluffs.:0.0:0.0:false
+lake:the placid waters of a calm, clear lake gently lapping the shoreline.:like you could go for a swim. If only you knew how to swim.:0.0:0.0:false

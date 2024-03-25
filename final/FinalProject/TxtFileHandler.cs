@@ -3,11 +3,13 @@ using System.IO;
 public class TxtFileHandler
 {
     public string fileName{get; set;}
-    public TxtFileHandler(){}
-
+    public static string[] files = Directory.GetFiles("terrainData");
+    public TxtFileHandler(){Console.WriteLine(files[0]);}
+    //Dont like this, but we can fix later
+    private static string workingDirectory = @".\terrainData\";
     public TxtFileHandler(string fileName)
     {
-        this.fileName = fileName;
+        this.fileName = workingDirectory + fileName;
     }
 
     public string[] ImportFromFile()
