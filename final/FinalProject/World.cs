@@ -29,16 +29,20 @@ public class World
 
         switch (worldSize)  //Maybe default to small?
         {
-            case "Small":
+            case "small":
                 size = 11;
                 break;
 
-            case "Medium":
+            case "medium":
                 size = 21;
                 break;
             
-            case "Large":
+            case "large":
                 size = 31;
+                break;
+
+            default:
+                Console.WriteLine("Input not recognized");
                 break;
         }
 

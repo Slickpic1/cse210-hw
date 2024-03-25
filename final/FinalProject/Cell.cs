@@ -45,6 +45,11 @@ public class Cell
     {
         return type;
     }
+
+    public bool IsImpassable()
+    {
+        return impassable;
+    }
     private void GenerateCellFromFileData(string[] fileData, int terrainIndex)
     {
         ////Parse into specific values (see if theres a better way)
@@ -60,25 +65,25 @@ public class Cell
         Console.Write($"You see {description}");
     }
 
-    public void DescribeAdjacentCell(string direction, World world)
+    public void DescribeAdjacentCell(string direction)
     {
         string neighborDesc = $"To the {direction}, you see a ";
         switch (direction)
         {
             case "north":
-                neighborDesc += world.world[position[0]+1,position[1]].GetCellType();
+                neighborDesc += Program.gameWorld.world[position[0]+1,position[1]].GetCellType();
                 break;
 
             case "south":
-                neighborDesc += world.world[position[0]-1,position[1]].GetCellType();
+                neighborDesc += Program.gameWorld.world[position[0]-1,position[1]].GetCellType();
                 break;
 
             case "east":
-                neighborDesc += world.world[position[0],position[1]+1].GetCellType();
+                neighborDesc += Program.gameWorld.world[position[0],position[1]+1].GetCellType();
                 break;
 
             case "west":
-                neighborDesc += world.world[position[0],position[1]-1].GetCellType();
+                neighborDesc += Program.gameWorld.world[position[0],position[1]-1].GetCellType();
                 break;
         }
 
