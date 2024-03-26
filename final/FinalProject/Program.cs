@@ -5,17 +5,24 @@ class Program
     static public World gameWorld;  //will this be readable by all classes?
     static void Main(string[] args)
     {
-        //This test class will run through a variety of tests. For debugging only.
-        //Test test = new Test();
+        bool testing = true;
         
-        bool choosingOptions = true;
-        while(choosingOptions)
+        if (testing)
         {
-            DisplayMenu();
-            choosingOptions = GetMenuChoice();
+            //This test class will run through a variety of tests. For debugging only.
+            Test test = new Test();
         }
-
-        PlayGame();
+        else
+        {
+            //Maybe update to be a separate function? That way it won't grow too large.
+            bool choosingOptions = true;
+            while(choosingOptions)
+            {
+                DisplayMenu();
+                choosingOptions = GetMenuChoice();
+            }
+            PlayGame();
+        }
     }
 
     static void DisplayMenu()
@@ -88,11 +95,11 @@ class Program
         Player player = new Player();
         bool stillPlaying = true;
 
+        //Describe the cell we are in
+        player.Look("around");
+
         while (stillPlaying)
         {
-            //Describe the cell we are in
-            player.Look("around");
-
             //Ask player what they would like to do
             Console.Write("What would you like to do? ");
             string userInput = Console.ReadLine();
@@ -108,6 +115,7 @@ class Program
                 //Move player
                 case "move":
                     player.Move(inputChoices[1]);
+                    player.Look("around");
                     break;
 
                 //Search around area for items

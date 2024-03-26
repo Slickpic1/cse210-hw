@@ -63,7 +63,7 @@ public class Cell
 
     public void DescribeCell()
     {
-        Console.Write($"You see {description}");
+        Console.WriteLine($"You see {description} ");
     }
 
     public void DescribeAdjacentCell(string direction)

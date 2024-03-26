@@ -9,7 +9,9 @@ public class Player : Character
     public void Move(string direction)
     {
         // Determine where the new position will be
-        int[] newPosition = position;
+        int xPos = position[1];
+        int yPos = position[0];
+        int[] newPosition = {yPos,xPos};
         switch (direction)
         {
             case "north":
@@ -21,11 +23,11 @@ public class Player : Character
                 break;
 
             case "east":
-                newPosition[0] += 1;
+                newPosition[1] += 1;
                 break;
 
             case "west":
-                newPosition[0] -= 1;
+                newPosition[1] -= 1;
                 break;
         }
 
@@ -36,7 +38,9 @@ public class Player : Character
         }
         else
         {
-            position = newPosition;
+            //Update position if legal
+            position[0] = newPosition[0];
+            position[1] = newPosition[1];
         }
     }
 
