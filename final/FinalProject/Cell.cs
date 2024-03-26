@@ -12,7 +12,7 @@ public class Cell
     protected string type;
     protected string description;
     protected string mood;
-    public int[] position{get; set;}
+    public int[] position = {0,0};
 
     //To be implemented later, if possible
     //protected float enemyChanceModifier;
@@ -21,9 +21,10 @@ public class Cell
     //protected List<Item> items = new List<Item>();
     //protected List<Item> treasure = new List<Item>();
 
-    public Cell()
+    public Cell(int[] position)
     {
         //Cell with no call data for special cases. Might overwrite in the future
+        this.position = position;
     }
 
     //Generate random cell from given list of items
@@ -71,6 +72,7 @@ public class Cell
         switch (direction)
         {
             case "north":
+                Console.WriteLine(position[0]);
                 neighborDesc += Program.gameWorld.world[position[0]+1,position[1]].GetCellType();
                 break;
 

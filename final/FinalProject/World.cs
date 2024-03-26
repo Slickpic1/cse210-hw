@@ -26,7 +26,6 @@ public class World
     }
     public World(string worldSize)
     {
-
         switch (worldSize)  //Maybe default to small?
         {
             case "small":
@@ -142,7 +141,8 @@ public class World
     private void GenerateWorldSpawn()
     {
         //This overwrites the bottom left cell<?> with spawn
-        Cell spawnCell = new SpawnCell();
+        int[] position = {1,1};
+        Cell spawnCell = new SpawnCell(position);
         world[1,1] = spawnCell;
     }
 }

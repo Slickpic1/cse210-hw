@@ -6,16 +6,16 @@ class Program
     static void Main(string[] args)
     {
         //This test class will run through a variety of tests. For debugging only.
-        Test test = new Test();
+        //Test test = new Test();
         
-        //bool choosingOptions = true;
-        //while(choosingOptions)
-        //{
-        //    DisplayMenu();
-        //    choosingOptions = GetMenuChoice();
-        //}
-//
-        //PlayGame();
+        bool choosingOptions = true;
+        while(choosingOptions)
+        {
+            DisplayMenu();
+            choosingOptions = GetMenuChoice();
+        }
+
+        PlayGame();
     }
 
     static void DisplayMenu()
