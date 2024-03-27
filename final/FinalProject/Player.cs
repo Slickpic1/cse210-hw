@@ -1,3 +1,4 @@
+namespace Adventure_Qwest;
 public class Player : Character
 {
     public Player() : base()

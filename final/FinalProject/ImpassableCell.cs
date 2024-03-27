@@ -1,3 +1,4 @@
+namespace Adventure_Qwest;
 public class ImpassableCell : Cell
 {
     public ImpassableCell(string[] fileData, int[] position) : base(fileData,position)
