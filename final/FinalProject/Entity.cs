@@ -1,5 +1,5 @@
 namespace Adventure_Qwest;
-public class Character
+public class Entity
 {
     ///////////////////////////////////////////////////////////////////////////
     // Class: Character
@@ -10,11 +10,13 @@ public class Character
     protected int health;
     bool isAlive = true;
     public int[] position = {0,0};  //initial position, inside of a mountain
-    protected List<Item> items = new List<Item>();
+    
+    //Implement later//
+    //protected List<Item> items = new List<Item>();
     //protected Weapon weapon = new Weapon(); Do this later
 
-    public Character(){}
-    public Character(int[] position)
+    public Entity(){}
+    public Entity(int[] position)
     {
         this.position = position;
     }

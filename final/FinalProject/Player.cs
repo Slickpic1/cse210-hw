@@ -1,5 +1,5 @@
 namespace Adventure_Qwest;
-public class Player : Character
+public class Player : Entity
 {
     public Player() : base()
     {

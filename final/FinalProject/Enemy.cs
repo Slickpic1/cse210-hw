@@ -1,5 +1,5 @@
 namespace Adventure_Qwest;
-public class Enemy : Character
+public class Enemy : Entity
 {
     public Enemy(int[] position) : base(position)
     {
