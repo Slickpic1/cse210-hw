@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 namespace Adventure_Qwest;
 public class Player : Entity
+=======
+public class Player : Character
+>>>>>>> parent of 3e65b7b (All current files now use proper namespace (insomuch as I know).)
 {
     public Player() : base()
     {

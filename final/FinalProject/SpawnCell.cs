@@ -1,4 +1,3 @@
-namespace Adventure_Qwest;
 public class SpawnCell : Cell
 {
     public SpawnCell(int[] position) : base(position)
