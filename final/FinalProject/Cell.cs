@@ -11,6 +11,7 @@ public class Cell
     Random rand = new Random();
     protected bool impassable = false;   //Default value, is this ok, or need to be in the call?
     protected string type;
+    protected List<string> enemyTypes;
     protected string description;
     protected string mood;
     public int[] position = {0,0};
@@ -24,7 +25,6 @@ public class Cell
 
     public Cell(int[] position)
     {
-        //Cell with no call data for special cases. Might overwrite in the future
         this.position = position;
     }
 
