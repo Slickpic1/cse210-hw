@@ -8,17 +8,26 @@ public class Cell
     //     leftover items.
     /////////////////////////////////////////////////////////////////
     
-    Random rand = new Random();
+    protected Random rand = new Random();
     protected bool impassable = false;   //Default value, is this ok, or need to be in the call?
     protected string type;
-    protected List<string> enemyTypes;
+    protected List<string> enemyTypes = new List<string>{};
     protected string description;
     protected string mood;
     public int[] position = {0,0};
+    protected List<string> terrainData;
 
-    //To be implemented later, if possible
-    //protected float enemyChanceModifier;
-    //protected float treasureChanceModifier;
+    //Indexing variables
+    protected int TERRAIN_INDEX;
+    protected int TYPE_INDEX = 0;
+    protected int DECRIPTION_INDEX = 1;
+    protected int MOOD_INDEX = 2;
+    protected int ENEMY_SPAWN_CHANCE_INDEX = 3;
+    protected int TREASURE_SPAWN_CHANCE_INDEX = 4;
+    protected int ENEMY_TYPE_INDEX = 5;
+
+    protected int enemySpawnChance = 0; //default
+    protected int treasureSpawnChance;  //default
     //protected List<Enemy> enemies = new List<Enemy>();
     //protected List<Item> items = new List<Item>();
     //protected List<Item> treasure = new List<Item>();
@@ -27,20 +36,12 @@ public class Cell
     {
         this.position = position;
     }
-
-    //Generate random cell from given list of items
-    public Cell(string[] fileData, int[] position)
-    {
-        int terrainIndex = rand.Next(0,fileData.Length);
-        GenerateCellFromFileData(fileData,terrainIndex);
-        this.position = position;
-    }
-
+    
     //This is used when a specific cell is wanted
-    public Cell(string[] fileData,int terrainIndex, int[] position) //Could be used to just generate cell, might not need other function
+    public Cell(int TERRAIN_INDEX, int[] position)
     {
-        GenerateCellFromFileData(fileData,terrainIndex);
         this.position = position;
+        this.TERRAIN_INDEX = TERRAIN_INDEX;
     }
 
     public string GetCellType()
@@ -48,18 +49,15 @@ public class Cell
         return type;
     }
 
-    public bool IsImpassable()
+    public bool IsImpassable()  //maybe need to rename to make more clear
     {
         return impassable;
     }
-    private void GenerateCellFromFileData(string[] fileData, int terrainIndex)
+    public virtual void GenerateCell()
     {
-        ////Parse into specific values (see if theres a better way)
-        string terrain = fileData[terrainIndex];
-        var splitData = terrain.Split(":");
-        type = splitData[0];
-        description = splitData[1];
-        mood = splitData[2];
+        this.type = terrainData[TYPE_INDEX];
+        this.description = terrainData[DECRIPTION_INDEX];
+        this.mood = terrainData[MOOD_INDEX];
     }
 
     public void DescribeCell()
@@ -93,5 +91,12 @@ public class Cell
         Console.WriteLine(neighborDesc + ".");  //Will format this later
     }
 
-
+    protected void ParseEnemiesString(string enemies)
+    {
+        string[] splitString = enemies.Split(",");
+        foreach(string enemyType in splitString)
+        {
+            this.enemyTypes.Add(enemyType);
+        }
+    }
 }

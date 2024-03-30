@@ -12,12 +12,7 @@ public class World
     /// Note: BE VERY CAREFUL ABOUT HOW WE ARE READING THE ARRAY
 
     Random random = new Random();
-    
-    static TxtFileHandler terrainData = new TxtFileHandler("terrainData.txt");  //What does static do
-    static TxtFileHandler impassableTerrainData = new TxtFileHandler("impassableTerrainData.txt");
-    static TxtFileHandler safeTerrainData = new TxtFileHandler("safeTerrainData.txt");
-    static TxtFileHandler normalTerrainData = new TxtFileHandler("normalTerrainData.txt");
-    static TxtFileHandler hostileTerrainData = new TxtFileHandler("hostileTerrainData.txt");
+    private int MOUNTAIN_INDEX = 0;
     private int size = 11;             //if not zero, returns error with below function (not sure why)
     public Cell[,] world;              //not sure if this is legal
 
@@ -56,11 +51,8 @@ public class World
 
     private void GenerateWorldBorder(int size)
     {
-        //Import the impassable terrain data
-        string[] borderData = impassableTerrainData.ImportFromFile();
-
         //Create a basic mountain type cell
-        Cell mountain;// = new ImpassableCell(borderData,0);   //NEED TO UPDATE TO FIT FILEDATA DESCRIPTION
+        Cell mountain;
 
         //Run along vertical axis
         for (int i = 0; i < size;i++)
@@ -72,7 +64,7 @@ public class World
                 for (int j = 0; j < size; j++)
                 {
                     int[] position = {i,j};
-                    mountain = new ImpassableCell(borderData,0,position);
+                    mountain = new ImpassableCell(0,position);
                     world[i,j] = mountain;
                 }
             }
@@ -82,10 +74,10 @@ public class World
             {
                 int[] position1 = {i,0};
                 int[] position2 = {i,size-1};
-                mountain = new ImpassableCell(borderData,0,position1);
+                mountain = new ImpassableCell(MOUNTAIN_INDEX,position1);
                 world[i,0] = mountain;
 
-                mountain = new ImpassableCell(borderData,0,position2);
+                mountain = new ImpassableCell(MOUNTAIN_INDEX,position2);
                 world[i,size-1] = mountain;
             }
         } 
@@ -109,29 +101,25 @@ public class World
                 //Normal cell roll
                 if (spawnChance <= 50)
                 {
-                    string[] normalTerrain = normalTerrainData.ImportFromFile(); //Maybe rewrite these as fileData?
-                    intCell = new NormalCell(normalTerrain,position);
+                    intCell = new NormalCell(position);
                 }
 
                 //Safe cell roll
                 else if(spawnChance <= 80)
                 {
-                    string[] safeTerrain = safeTerrainData.ImportFromFile();
-                    intCell = new SafeCell(safeTerrain,position);
+                    intCell = new SafeCell(position);
                 }
 
                 //Hostile cell roll
                 else if(spawnChance <= 90)
                 {
-                    string[] hostileTerrain = hostileTerrainData.ImportFromFile();
-                    intCell = new HostileCell(hostileTerrain,position);
+                    intCell = new HostileCell(position);
                 }
 
                 //Rest is impassible
                 else
                 {
-                    string[] fileData = impassableTerrainData.ImportFromFile();
-                    intCell = new ImpassableCell(fileData,position);
+                    intCell = new ImpassableCell(position);
                 }
 
                 world[i,j] = intCell;

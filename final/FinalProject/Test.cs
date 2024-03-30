@@ -18,14 +18,11 @@ public class Test
     }
     private void TestCellDisplay()
     {
-        TxtFileHandler testFile = new TxtFileHandler("normalTerrainData.txt");
-        string[] testFileData = testFile.ImportFromFile();
         int[] testPosition = {1,2};
-        Cell testCell = new NormalCell(testFileData,testPosition);
+        Cell testCell = new NormalCell(testPosition);
         testCell.DescribeCell();
 
         testCell.DescribeAdjacentCell("north");
-
     }
 
     private void TestPlayerMovement()
