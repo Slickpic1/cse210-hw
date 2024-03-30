@@ -1,5 +1,6 @@
 using System;
 
+namespace Adventure_Qwest;
 class Program
 {
     static public World gameWorld;  //will this be readable by all classes?
