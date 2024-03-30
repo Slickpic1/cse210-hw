@@ -1,4 +1,3 @@
-namespace Adventure_Qwest;
 public class NormalCell : Cell
 {
     private List<List<string>> normalTerrain = new List<List<string>>

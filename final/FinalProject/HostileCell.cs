@@ -1,4 +1,3 @@
-namespace Adventure_Qwest;
 public class HostileCell : Cell
 {
     private List<List<string>> hostileTerrain = new List<List<string>>

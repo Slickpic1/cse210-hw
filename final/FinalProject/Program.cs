@@ -1,7 +1,5 @@
 using System;
-//using System.Diagnostics
 
-namespace Adventure_Qwest;
 class Program
 {
     static public World gameWorld;  //will this be readable by all classes?
@@ -29,7 +27,7 @@ class Program
 
     static void DisplayMenu()
     {
-        Console.WriteLine("Welcome to Adventure Qwest!");
+        Console.WriteLine("Welcome to Adventure Quest!");
         Console.WriteLine();
         Console.WriteLine("Select an option from below: ");
         Console.WriteLine("  1. New Game");
@@ -80,23 +78,11 @@ class Program
                 size = "small";
                 break;
 
-            case "1":
-                size = "small";
-                break;
-
             case "medium":
                 size = "medium";
                 break;
 
-            case "2":
-                size = "medium";
-                break;
-
             case "large":
-                size = "large";
-                break;
-
-            case "3":
                 size = "large";
                 break;
         }
