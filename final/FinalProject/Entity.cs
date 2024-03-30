@@ -1,9 +1,4 @@
-<<<<<<< HEAD:final/FinalProject/Entity.cs
-namespace Adventure_Qwest;
 public class Entity
-=======
-public class Character
->>>>>>> parent of 3e65b7b (All current files now use proper namespace (insomuch as I know).):final/FinalProject/Character.cs
 {
     ///////////////////////////////////////////////////////////////////////////
     // Class: Character

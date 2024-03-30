@@ -1,3 +1,4 @@
+namespace Adventure_Qwest;
 public class ImpassableCell : Cell
 {
     List<List<string>> impassableTerrain = new List<List<string>>

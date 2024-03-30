@@ -1,3 +1,4 @@
+namespace Adventure_Qwest;
 public class SafeCell : Cell
 {
     private List<List<string>> safeTerrain = new List<List<string>>
