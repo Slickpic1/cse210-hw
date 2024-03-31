@@ -27,8 +27,8 @@ public class Cell
     protected int TREASURE_SPAWN_CHANCE_INDEX = 4;
     protected int ENEMY_TYPE_INDEX = 5;
 
-    protected int enemySpawnChance = 0; //default
-    protected int treasureSpawnChance;  //default
+    public int enemySpawnChance = -1; //default
+    protected int treasureSpawnChance = -1;  //default
     //protected List<Enemy> enemies = new List<Enemy>();
     //protected List<Item> items = new List<Item>();
     //protected List<Item> treasure = new List<Item>();
