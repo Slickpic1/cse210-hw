@@ -1,0 +1,309 @@
+============================================
+Goals:
+============================================
+Basic:
+  - World Generation                     [x]
+    - World w/ a border                  [x]
+    - Variety of random terrain          [x]
+    - Spawn Generation                   [x]
+    - Ability for player to traverse     [x]
+    - Cell description                   [x]
+    - Adjacent cell description          [x]
+
+  - Playable Character                   [x]
+    - Ability to traverse world          [x]
+    - Ability to walk to any cell not
+      impassable                         [x]
+
+  - Enemies                              [ ]
+    - Ability to spawn                   [ ]
+    - Ability to attack                  [ ]
+    - Ability to die                     [ ]
+    - Some variety of enemies            [ ]
+
+  - Basic combat                         [ ]
+    - Turn based combat (player starts)  [ ]
+    - Different attack types from player [ ]
+    - Action choice menu                 [ ]
+
+  - Basic error handling                 [ ]
+    - Wrong inputs dont break prgrm      [ ]
+    - More test function functionality?  [ ]
+
+  - Basic UI                             [ ]
+    - Menu displays                      [ ]
+    - Player inputs                      [ ]
+
+Advanced:
+  - World Generation                     [ ]
+    - Difficuly Scaling                  [ ]
+    - More logical spawning              [ ]
+      - Guaranteed hostile cells         [ ]
+      - logical terrain change           [ ]
+
+  - Character Functionality              [ ]
+    - Health                             [ ]
+      - Damage reduces health            [ ]
+      - Effects that heal, heal          [ ]
+      - Display of health as numerical
+        and/or as a health bar           [ ]
+
+    - Inventory                          [ ]
+      - Ability to access inventory      [ ]
+      - Ability to remove/ add items     [ ]
+      - Weapon Equip, de-equip           [ ]
+      - Ability to use some items, but 
+        not all                          [ ]
+    
+    - Stats                              [ ]
+      - Vigor                            [ ]
+      - Strength                         [ ]
+      - Athleticism                      [ ]
+      - Inteligence                      [ ]
+      - Luck                             [ ]
+
+  - World Functionality                  [ ]
+    - Cell Functionality                 [ ]
+      - Description                      [ ]
+      - Adjacent cell Description        [ ]
+      - Item retention                   [ ]
+      - Random attribute generation      [ ]
+      - Random enemy encounters          [ ]
+    - World Grid Construction            [ ]
+
+  - Enemy Functionality                  [ ]
+    - Types                              [ ]
+    - Health                             [ ]
+    - Weapon                             [ ]
+    - Attack                             [ ]
+    - Dropped Items                      [ ]
+    - Level                              [ ]
+
+  - Combat Functionality                 [ ]
+    - Turned based                       [ ]
+    - Attack types                       [ ]
+      - Stab                             [ ]
+      - Slash                            [ ]
+      - Poke                             [ ]
+      - Jeer                             [ ]
+      - Bash                             [ ]
+      - Smash                            [ ]
+      - Crash                            [ ]
+      - Shoot                            [ ]
+
+    - Alternative choices                [ ]
+      - Flee
+      - Screech
+      - Block
+      - Hide
+
+    - 
+
+
+============================================
+Ideas:
+============================================
+- Animated cells outside of player input
+- You died title screen
+- Title screens
+- load/save Functionality
+- Load scenes
+- Rotoscoped animations (would be funny)
+- Enemy models (ASCII or basic enough)
+- Describing Combat
+- Time of day and/ or weather
+- Difficulty Scaling
+- Multiple terrainData files for different terrain types (ex impassable, peaceful, easy, hard, etc)
+- Character condition
+- Wrap around conditions for the world
+- Standardized/ multioptional user inputs
+- Make Menu into a class
+-Enemies:
+  - Gublins
+  - Ghools
+  - Wheeches
+  - Rats (rets)
+  - Subatomic Bear
+  - Molecular Bear
+  - Mini Bear
+  - Bear
+  - Bigger Bear
+  - Biggest Bear
+
+
+====================================================
+To Do:
+
+====================================================
+ - Flavor text format for cell description       [ ]
+ - Figure out world generation                   [ ]
+    - Guaranteed Cell Spawns <?>                 [ ]
+ - Ability for fileHandler to parse out 
+   description text block                        [ ]
+ - Ability for fileHandler to read from a 
+   different folder                              [ ]
+ - Ability for fileHandler to find files <?>     [ ]
+ - Fix position of cells                         [ ]
+ - replace fixed indeces w/ varsiables           [ ]
+ - Replace file reading in world w/ lists in
+   classes<?>                                    [ ]
+
+====================================================
+Questions:
+
+====================================================
+General Programming:
+  - How do arrays work in C#?
+  - What does static do for variables?
+  - Is it better to have multiple classes for similar
+  items of just fit data through a class?
+  - Better way to assign position? (see Player.cs)
+  - How do get, sets work for protected/private vars?
+  - If I have a world declared in programs, can i call from every other class?
+  - Is there a beter way to structure my code?
+  - Action class?
+
+Program Specific:
+  - How does enemy spawning work?
+  - Where do players spawn?
+  - How is the world laid out?
+
+
+========================================
+Program Outline:
+
+========================================
+
+--------------------------
+Program:
+--------------------------
+Vars:
+  
+
+Functions:
+  MovePlayer()
+    - Check to see if you can then move if possible
+  
+
+--------------------------
+World:
+--------------------------
+Vars:
+  private Cell[,] Cells  
+
+Functions:
+  public World(size)
+  public GenerateWorld()
+  public GetCell()
+  public LoadWorld()
+  public SaveWorld()
+
+--------------------------
+Cell:                             
+--------------------------        
+Vars:                             
+  protected bool isTraversable        //Whether or not you can access this terrain (default true)
+  protected string name               //Name of cell (ex. mountains, valleys, etc)
+  protected string type               //Should we account for multiple types?
+  protected string description
+  protected string mood
+  protected float enemyChanceModifier
+  protected float treasureChanceModifier
+  protected list<enemy> Enemies
+  protected list<items> Treasure
+
+Functions:
+  public virtual DescribeCell()
+  public virtual DescribeAdjacentCell()
+  protected virtual spawnTreasure()
+  protected virtual spawnEnemies()
+
+--------------------------
+ImpassableCell [Cell]: <?>
+--------------------------
+Vars:
+  isTraversable = False;
+  enemyChanceModifier = 0.0;
+  treasureChanceModifier = 0.0;
+
+Functions:
+
+
+--------------------------
+SafeCell
+
+
+--------------------------
+Entity:                  //Notes: should try and match DnD type settings if possible
+--------------------------
+Vars:
+  protected int health
+  protected int baseDamage
+  protected list<items> inventory
+  protected list<items> Equipment
+  protected list<list> Stats                //This could also be a string w/ two vals, or a dict, etc
+
+Functions:
+  virtual Display Health()
+  virtual TakeDamage()
+  virtual DealDamage()
+  virtual GainHealth()
+  virtual AddItem()
+  virtual DropItem()
+  virtual EquipItem()
+  virtual UnEquipItem()
+
+--------------------------
+Player [Entity]:
+--------------------------
+Vars:
+  private (array?) PlayerPosition
+  private string orientation             //or direction facing
+
+Functions:
+  public Move()
+
+--------------------------
+Player [Entity]:
+--------------------------
+Vars:
+  private type
+
+--------------------------
+Item:
+--------------------------
+Vars:
+  protected string type   //Weapon, tool, consumable, armour, misc
+  protected int weight
+  protected string name
+  protected string description
+  
+Functions:
+  virtual DisplayItem()
+  virtual UseItem()
+
+
+--------------------------
+Weapon[Item]:
+--------------------------
+Vars:
+  private int damage
+  private string damageType
+
+Functions:
+  override DisplayItem()
+    - base + dmg and attack type
+  override UseItem()
+    - Attack
+
+
+
+====================================================
+Formats:
+ - Formats of filetypes for easier I/O
+====================================================
+
+---------------------------
+|    terrainData.text     |   //Should we have multiple?
+---------------------------
+type:description:mood:<enemyChanceModifier>:<treasureChanceModifier>:<isTraversable>

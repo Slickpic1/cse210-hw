@@ -100,4 +100,9 @@ public class Cell
             this.enemyTypes.Add(enemyType);
         }
     }
+
+    protected void SpawnEnemies()
+    {
+        
+    }
 }

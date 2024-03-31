@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+
+namespace Adventure_Qwest;
 public class Entity
 {
     ///////////////////////////////////////////////////////////////////////////
@@ -6,8 +9,18 @@ public class Entity
     //         the health, stats, inventory, equipment, and related functions
     ///////////////////////////////////////////////////////////////////////////
     
-    protected int health;
-    bool isAlive = true;
+    protected int HP;
+    protected int AC;
+    protected Dictionary<string,int> stats = new Dictionary<string, int>()
+    {
+        {"strength", 10},
+        {"dexterity",10},
+        {"constitution",10},
+        {"intelligence",10},
+        {"wisdom",10},
+        {"charisma",10}
+    };
+    private bool isAlive = true;
     public int[] position = {0,0};  //initial position, inside of a mountain
     
     //Implement later//
@@ -22,8 +35,8 @@ public class Entity
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        if (health <= 0)
+        HP -= damage;
+        if (HP <= 0)
         {
             isAlive = false;
         }
