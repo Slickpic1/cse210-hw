@@ -135,18 +135,4 @@ public class World
         Cell spawnCell = new SpawnCell(position);
         world[1,1] = spawnCell;
     }
-
-    private void SpawnEnemies()
-    {
-        //Go through each cell and determine the spawn chance of enemies. Roll a random int against it, and if it 
-        //is within the spawnChance, then spawn an enemy
-        for (int i = 1; i < size-1; i++)
-        {
-            for (int j = 1; j < size - 1; j++)
-            {
-                
-                
-            }
-        }
-    }
 }

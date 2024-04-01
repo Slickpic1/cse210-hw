@@ -16,10 +16,10 @@ Basic:
       impassable                         [x]
 
   - Enemies                              [ ]
-    - Ability to spawn                   [ ]
+    - Ability to spawn                   [x]
     - Ability to attack                  [ ]
     - Ability to die                     [ ]
-    - Some variety of enemies            [ ]
+    - Some variety of enemies            [x]
 
   - Basic combat                         [ ]
     - Turn based combat (player starts)  [ ]
@@ -322,10 +322,16 @@ Formats:
 ---------------------------
 type:description:mood:<enemyChanceModifier>:<treasureChanceModifier>:<isTraversable>
 
-
- _ _ _ _ _
-| / \      _
-|/   \/\  / \
-|    /  \/
+Potential Ascii Art
+ _ _ _ _ _ 
+| / \      
+|/   \/\  _ 
+|    /  \/ 
 |   //\  \ 
 |  //  \
+ _ _ _ _ _ 
+| / \  _
+|/   \/ \
+|/_ _\/ \
+|  | /_ _\
+|      |
