@@ -19,7 +19,7 @@ class Program
 
         Dictionary<string,Monster> undead = new Dictionary<string, Monster>()
         {
-            {"banchee", new Monster {name = "banshee", type = "undead", health = 58}},
+            {"banshee", new Monster {name = "banshee", type = "undead", health = 58}},
         };
 
         Dictionary<string,Monster> plants = new Dictionary<string, Monster>()

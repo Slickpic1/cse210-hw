@@ -6,7 +6,7 @@ class Program
     static public World gameWorld;  //will this be readable by all classes?
     static void Main(string[] args)
     {
-        bool testing = true;
+        bool testing = false;
         
         if (testing)
         {
