@@ -7,7 +7,6 @@ public class Test
         Console.Clear();
         Program.GenerateWorld();
         testWorld = Program.gameWorld;  //does this do what i need it to?
-        //TestTxtFileReader();
         TestCellDisplay();
         TestWorldGeneration();
         TestPlayerMovement();
@@ -43,6 +42,7 @@ public class Test
         bool borderGenTest = TestBorderGeneration();
         bool interiorGenTest = TestInteriorWorldGen();
         bool spawnGenTest = TestSpawnWorldGen();
+        //bool monsterSpawnTest = TestEnemySpawns();
 
         //Display Results  (Can we align this better?)
         Console.WriteLine();

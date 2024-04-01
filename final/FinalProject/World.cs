@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Drawing;
 namespace Adventure_Qwest;
 public class World
@@ -46,6 +47,7 @@ public class World
         GenerateWorldBorder(size);
         GenerateWorldInterior(size);
         GenerateWorldSpawn();
+        SpawnEnemies();
     }
 
     private void GenerateWorldBorder(int size)
@@ -142,15 +144,7 @@ public class World
         {
             for (int j = 1; j < size - 1; j++)
             {
-                int spawnChance = random.Next(0,100);
-                int[] position = {i,j};
-
-                //If the spawn chance we roll is <= cells enemySpawnChance, spawn enemy
-                if (spawnChance <= Program.gameWorld.world[i,j].enemySpawnChance)
-                {
-                    //Spawn enemy
-                    
-                }
+                
                 
             }
         }

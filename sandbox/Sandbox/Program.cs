@@ -4,8 +4,9 @@ using System.Collections.Generic;
 class Program
 {
     static void Main(string[] args)
-    {
-        Console.WriteLine("Hello Sandbox World!");
+    {   
+        int math = (int) 3/2;
+        Console.WriteLine(math);
         Dictionary<string,Monster> fiends = new Dictionary<string, Monster>()
         {
             {"hag",new Monster {name = "hag", type = "fiend", health = 20}},

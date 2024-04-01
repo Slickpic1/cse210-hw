@@ -3,40 +3,40 @@ namespace Adventure_Qwest;
 
 public class MonsterData
 {
-    public Dictionary<string,Dictionary<string,Monster>> beastiary = new Dictionary<string, Dictionary<string, Monster>>();
+    public Dictionary<string,List<Monster>> beastiary = new Dictionary<string, List<Monster>>();
     public MonsterData()
     {
-        Dictionary<string, Monster> undead = new Dictionary<string, Monster>()
+        List<Monster> undead = new List<Monster>()
         {
-            {"zombie",new Zombie()},
-            {"ghost", new Ghost()}
+            {new Zombie()},
+            {new Ghost()}
         };
 
-        Dictionary<string, Monster> beasts = new Dictionary<string, Monster>()
+        List<Monster> beasts = new List<Monster>()
         {
-            {"bear", new Bear()},
-            {"fat rat", new FatRat()},
+            {new Bear()},
+            {new FatRat()},
         };
 
-        Dictionary<string, Monster> plants = new Dictionary<string, Monster>()
+        List<Monster> plants = new List<Monster>()
         {
-            {"shrub", new Shrub()},
-            {"twig blight", new TwigBlight()}
+            {new Shrub()},
+            {new TwigBlight()}
         };
 
-        Dictionary<string, Monster> humanoids = new Dictionary<string, Monster>()
+        List<Monster> humanoids = new List<Monster>()
         {
-            {"goblin",new Goblin()}
+            {new Goblin()}
         };
 
-        Dictionary<string, Monster> fiends = new Dictionary<string, Monster>()
+        List<Monster> fiends = new List<Monster>()
         {
-            {"dretch",new Dretch()}
+            {new Dretch()}
         };
 
-        Dictionary<string, Monster> fey = new Dictionary<string, Monster>()
+        List<Monster> fey = new List<Monster>()
         {
-            {"food witch", new FoodWitch()}
+            {new FoodWitch()}
         };
 
         beastiary.Add("undead", undead);

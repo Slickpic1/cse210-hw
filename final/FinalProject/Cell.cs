@@ -1,5 +1,5 @@
 namespace Adventure_Qwest;
-
+using TextAnimation;
 public class Cell
 {
     /////////////////////////////////////////////////////////////////
@@ -12,11 +12,13 @@ public class Cell
     protected Random rand = new Random();
     protected bool impassable = false;   //Default value, is this ok, or need to be in the call?
     protected string type;
-    protected List<string> enemyTypes = new List<string>{};
+    public List<string> enemyTypes = new List<string>{};
     protected string description;
     protected string mood;
     public int[] position = {0,0};
     protected List<string> terrainData;
+    public MonsterData monsterData = new MonsterData();  //Might be a bad idea, but will do for now
+    List<Monster> typeMonster;
 
     //Indexing variables
     protected int TERRAIN_INDEX;
@@ -29,7 +31,7 @@ public class Cell
 
     public int enemySpawnChance = -1; //default
     protected int treasureSpawnChance = -1;  //default
-    //protected List<Enemy> enemies = new List<Enemy>();
+    protected List<Monster> monsters = new List<Monster>();
     //protected List<Item> items = new List<Item>();
     //protected List<Item> treasure = new List<Item>();
 
@@ -59,11 +61,19 @@ public class Cell
         this.type = terrainData[TYPE_INDEX];
         this.description = terrainData[DECRIPTION_INDEX];
         this.mood = terrainData[MOOD_INDEX];
+        SpawnEnemies();
     }
 
     public void DescribeCell()
     {
-        Console.WriteLine($"You see {description} ");
+        //Console.WriteLine($"You see {description} ");
+        string displayString = $"You see {description}\n";
+        
+        if (monsters.Count > 0)  //need to do this for multiple cases 
+        {
+            displayString += $"Oh no! You also spot a {monsters[0].GetName()}!\n";
+        }
+        TextAnimation.Program.DisplaySlowString(displayString);
     }
 
     public void DescribeAdjacentCell(string direction)
@@ -72,7 +82,6 @@ public class Cell
         switch (direction)
         {
             case "north":
-                Console.WriteLine(position[0]);
                 neighborDesc += Program.gameWorld.world[position[0]+1,position[1]].GetCellType();
                 break;
 
@@ -89,7 +98,7 @@ public class Cell
                 break;
         }
 
-        Console.WriteLine(neighborDesc + ".");  //Will format this later
+        TextAnimation.Program.DisplaySlowString(neighborDesc + ".");
     }
 
     protected void ParseEnemiesString(string enemies)
@@ -101,8 +110,24 @@ public class Cell
         }
     }
 
-    protected void SpawnEnemies()
+    public void SpawnEnemies()  //can loop this for multiple enemies
     {
-        
+        int spawnChance = rand.Next(0,100);
+                
+        //If the spawn chance we roll is <= cells enemySpawnChance, spawn enemy
+        if (spawnChance <= enemySpawnChance)
+        {
+            //Choose a random type from the enemy types
+            int typeChoice = rand.Next(0,enemyTypes.Count);
+            string enemyType = enemyTypes[typeChoice];
+            typeMonster = monsterData.beastiary[enemyType];
+
+            //Choose a random monster from said types
+            int monsterChoice = rand.Next(0,typeMonster.Count);  //make sure this indexes correct
+            Monster monster = typeMonster[monsterChoice];
+
+            //Add monster to list
+            monsters.Add(monster); //make sure to log their position!
+        }
     }
 }

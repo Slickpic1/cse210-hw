@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using Dice;
 
 namespace Adventure_Qwest;
-public class Entity
+public class Entity  //make abstract?
 {
     ///////////////////////////////////////////////////////////////////////////
     // Class: Character
@@ -11,14 +12,15 @@ public class Entity
     
     protected int HP;
     protected int AC;
+    protected int ATK_bonus;
     protected Dictionary<string,int> stats = new Dictionary<string, int>()
     {
-        {"strength", 10},
-        {"dexterity",10},
-        {"constitution",10},
-        {"intelligence",10},
-        {"wisdom",10},
-        {"charisma",10}
+        {"str",10},
+        {"dex",10},
+        {"con",10},
+        {"int",10},
+        {"wis",10},
+        {"cha",10}
     };
     private bool isAlive = true;
     public int[] position = {0,0};  //initial position, inside of a mountain
@@ -33,12 +35,27 @@ public class Entity
         this.position = position;
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int attack, int damage)
     {
-        HP -= damage;
+        //Check to see if attack hits
+        if (attack >= AC)
+        {
+            HP -= damage;
+        }
+        
         if (HP <= 0)
         {
             isAlive = false;
         }
+    }
+
+    public virtual int AttackRoll()
+    {
+        return -1;
+    }
+
+    public virtual int DamageRoll()
+    {
+        return -1;
     }
 }

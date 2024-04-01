@@ -5,33 +5,24 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello Learning04 World!");
+        Console.WriteLine(int.Parse(2.5/2))
     }
 }
 
-class Vehicle
+public class Monster
 {
-    private string make;
-    private string model;
-    private int miles;
+    public int HP;
+    public int AC;
+    public string type;
 
-    public Vehicle(strine make, string model, int miles)
-    {
-        this.make = make;
-        this.model = model;
-        this.miles = miles;
-    }
 }
 
-class Car : Vehicle
+public class Zombie : Monster
 {
-    //Thats it, but could make empty constructor if it complains.
-}
-
-class Truck : Vehicle
-{
-    private int towing;
-    public Truck(string make, string model, int miles, int towing) : base(make, model, miles)
+    public Zombie()
     {
-        this.towing = towing;
+        this.HP = 12;
+        this.AC = 4;
+        this.type = "undead";
     }
 }

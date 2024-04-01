@@ -1,4 +1,11 @@
+
+//#define DEBUG
+
 using System;
+using System.Diagnostics;
+
+//#Const DEBUG = true;
+
 
 namespace Adventure_Qwest;
 class Program

@@ -16,7 +16,7 @@ public class SafeCell : Cell
 
     public override void GenerateCell()
     {
-        base.GenerateCell();
         treasureSpawnChance = int.Parse(terrainData[TREASURE_SPAWN_CHANCE_INDEX]);
+        base.GenerateCell();
     }
 }

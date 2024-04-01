@@ -147,6 +147,7 @@ To Do:
  - replace fixed indeces w/ varsiables           [ ]
  - Replace file reading in world w/ lists in
    classes<?>                                    [ ]
+ - Make sure spawnChances are between 0-100      [ ]
 
 ====================================================
 Questions:
@@ -237,8 +238,10 @@ SafeCell
 Entity:                  //Notes: should try and match DnD type settings if possible
 --------------------------
 Vars:
-  protected int health
+  protected int HP
+  protected int AC
   protected int baseDamage
+  protected int[] position
   protected list<items> inventory
   protected list<items> Equipment
   protected list<list> Stats                //This could also be a string w/ two vals, or a dict, etc
@@ -246,28 +249,39 @@ Vars:
 Functions:
   virtual Display Health()
   virtual TakeDamage()
-  virtual DealDamage()
+  virtual Attack()
   virtual GainHealth()
-  virtual AddItem()
-  virtual DropItem()
-  virtual EquipItem()
-  virtual UnEquipItem()
 
 --------------------------
 Player [Entity]:
 --------------------------
 Vars:
-  private (array?) PlayerPosition
-  private string orientation             //or direction facing
 
 Functions:
-  public Move()
+  public Move(direction)
+  public Look(direction)
+  public AddItem()
+  public DropItem()
+  public EquipItem()
+  public UnEquipItem()
 
 --------------------------
-Player [Entity]:
+Monster [Entity]:
 --------------------------
 Vars:
-  private type
+  protected name
+  protected type
+  protected description
+
+Func:
+
+
+--------------------------
+Zombie [Monster]:
+--------------------------
+Vars:
+  HP = 22
+
 
 --------------------------
 Item:
@@ -307,3 +321,11 @@ Formats:
 |    terrainData.text     |   //Should we have multiple?
 ---------------------------
 type:description:mood:<enemyChanceModifier>:<treasureChanceModifier>:<isTraversable>
+
+
+ _ _ _ _ _
+| / \      _
+|/   \/\  / \
+|    /  \/
+|   //\  \ 
+|  //  \
