@@ -11,7 +11,7 @@ public class CombatLoop
         {
             //Starting with player
             Debug.WriteLine("Players Turn");
-            Debug.WriteLine($"Player health: {Program.player.GetHP()}");
+            Debug.WriteLine($"Player health: {Program.player.GetCurrentHP()}");
             string playerAction = Program.player.Action();
             switch (playerAction)
             {
@@ -48,12 +48,13 @@ public class CombatLoop
                 //Add xp to player
                 TextAnimation.Program.DisplaySlowString($"You slew the {monster.GetName()}!\n");
                 TextAnimation.Program.DisplaySlowString($"You gain {monster.GetXP()} XP!\n");
+                Program.player.AddXP(monster.GetXP());
                 return;
             }
 
             //Now time for the monster
             Debug.WriteLine($"{monster.GetName()}'s turn");
-            Debug.WriteLine($"{monster.GetName()}'s health: {monster.GetHP()}");
+            Debug.WriteLine($"{monster.GetName()}'s health: {monster.GetCurrentHP()}");
             string monsterAction = monster.Action();
             switch (monsterAction)
             {
@@ -61,9 +62,6 @@ public class CombatLoop
                     //Calculate the attack roll from the monster
                     int monsterAttackRoll = monster.AttackRoll();
                     int monsterDamageRoll = monster.DamageRoll();
-
-                    //Display that the monster attempts to make an attack
-                    TextAnimation.Program.DisplaySlowString($"The {monster.GetName()} attemptes to attack you!\n");
 
                     //Attempt to hit player
                     bool hit = Program.player.TakeDamage(monsterAttackRoll,monsterDamageRoll);
@@ -85,7 +83,11 @@ public class CombatLoop
                     
             }
 
-            //
+            //Check to see if player is alive
+            if (!Program.player.IsAlive())
+            {
+                Program.player.Death();
+            }
         }
         
     }

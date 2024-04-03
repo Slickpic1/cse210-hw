@@ -71,7 +71,14 @@ public class Cell
         
         if (monsters.Count > 0)  //need to do this for multiple cases 
         {
-            displayString += $"Oh no! You also spot a {monsters[0].GetName()}!\n";
+            if (monsters[0].IsAlive())
+            {
+                displayString += $"Oh no! You also spot a {monsters[0].GetName()}!\n";
+            }
+            else
+            {
+                displayString += $"You also see a dead {monsters[0].GetName()}\n";
+            }
         }
         TextAnimation.Program.DisplaySlowString(displayString);
     }
@@ -98,7 +105,7 @@ public class Cell
                 break;
         }
 
-        TextAnimation.Program.DisplaySlowString(neighborDesc + ".");
+        TextAnimation.Program.DisplaySlowString(neighborDesc + ".\n");
     }
 
     protected void ParseEnemiesString(string enemies)

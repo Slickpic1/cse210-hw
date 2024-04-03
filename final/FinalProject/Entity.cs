@@ -12,7 +12,7 @@ public class Entity  //make abstract?
     ///////////////////////////////////////////////////////////////////////////
     
     protected int maxHP;
-    protected int HP;
+    protected int currentHP;
     protected int AC;
     protected int ATK_bonus;
     protected bool canFlee;
@@ -50,9 +50,9 @@ public class Entity  //make abstract?
     {
 
     }
-    public virtual int GetHP()  //maybe rename
+    public virtual int GetCurrentHP()  //maybe rename
     {
-        return HP;
+        return currentHP;
     }
     public virtual bool TakeDamage(int attack, int damage) //individual notifications for damage taken or not?
     {
@@ -61,11 +61,11 @@ public class Entity  //make abstract?
         //Check to see if attack hits
         if (attack >= AC)
         {
-            HP -= damage;
+            currentHP -= damage;
             hit = true;
         }
         
-        if (HP <= 0)
+        if (currentHP <= 0)
         {
             isAlive = false;  //need to display if the creature (or player) has died
         }
@@ -80,5 +80,10 @@ public class Entity  //make abstract?
     public virtual int DamageRoll()
     {
         return -1;
+    }
+
+    public virtual void DisplayHealthStatus()
+    {
+        
     }
 }

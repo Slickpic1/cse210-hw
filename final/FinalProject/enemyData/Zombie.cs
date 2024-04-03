@@ -25,7 +25,8 @@ public class Zombie : Monster
         stats["cha"] = 5;
 
         //Define its basic stats
-        this.HP = 22;
+        this.maxHP = 22;
+        currentHP = maxHP;
         this.XP = 50;
         this.AC = 8;
         this.ATTACK_WEIGHT = 100;   //will always attack

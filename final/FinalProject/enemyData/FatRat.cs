@@ -17,7 +17,8 @@ public class FatRat:Monster
         stats["cha"] = 4;
 
         //Define its basic stats
-        this.HP = 3;
+        this.maxHP = 3;
+        currentHP = maxHP;
         this.XP = 10;
         this.AC = 11;
         this.ATTACK_WEIGHT = 100;
@@ -27,7 +28,7 @@ public class FatRat:Monster
 
     public override int AttackRoll()
     {
-        TextAnimation.Program.DisplaySlowString("The fat rat leaps in the air in attempt to bite your fingers!");
+        TextAnimation.Program.DisplaySlowString("The fat rat leaps in the air in attempt to bite your fingers!\n");
         return base.AttackRoll();
     }
 

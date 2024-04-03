@@ -13,7 +13,8 @@ public class Player : Entity
 
         //Set players base HP and AC
         AC = 14;
-        HP = 25;
+        maxHP = 25;
+        currentHP = maxHP;
         proficiencyBonus = 2;
     }
 
@@ -137,14 +138,24 @@ public class Player : Entity
         }
         
     }
-    
+
+    public override void DisplayHealthStatus()
+    {
+        base.DisplayHealthStatus();
+    }
+
     public void AddXP(int enemyXP)
     {
         score += enemyXP;
     }
-
     public int GetScore()
     {
         return score;
+    }
+
+    public void Death()
+    {
+        TextAnimation.Program.DisplaySlowString("You have died!\n");
+        TextAnimation.Program.DisplaySlowString($"Your score is {score}\n");
     }
 }

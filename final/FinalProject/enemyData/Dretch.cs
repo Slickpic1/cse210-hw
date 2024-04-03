@@ -17,7 +17,8 @@ public class Dretch : Monster
         stats["cha"] = 3;
 
         //Define its basic stats
-        this.HP = 18;
+        this.maxHP = 18;
+        currentHP = maxHP;
         this.XP = 50;
         this.AC = 11;
         this.ATTACK_WEIGHT = 100;
@@ -26,7 +27,7 @@ public class Dretch : Monster
 
     public override int AttackRoll()
     {
-        TextAnimation.Program.DisplaySlowString("The small dretch attempts to slash at you with its claws!");
+        TextAnimation.Program.DisplaySlowString("The small dretch attempts to slash at you with its claws!\n");
         return base.AttackRoll() + 2;
     }
 

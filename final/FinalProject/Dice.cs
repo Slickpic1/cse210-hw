@@ -1,5 +1,6 @@
 namespace Dice;
-public class Dice
+public class Dice   //do we want to rename to Roll, and subsequent sets become types, giving Dice.Roll.D20()?
+                    // or would we prefer to import as statis to give the functions RollD20() alone
 {
     static Random rand = new Random();
     static public int RollD2()

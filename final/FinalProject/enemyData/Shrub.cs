@@ -17,7 +17,8 @@ public class Shrub:Monster
         stats["cha"] = 17;
 
         //Define its basic stats
-        this.HP = 20;
+        this.maxHP = 20;
+        currentHP = maxHP;
         this.XP = 10;
         this.AC = 9;
         this.ATTACK_WEIGHT = 100;
@@ -26,7 +27,7 @@ public class Shrub:Monster
     public override int AttackRoll()
     {
         //Bush can never hit you
-        TextAnimation.Program.DisplaySlowString("You feel like the bush is trying to hit you, despite only being a bush.");
+        TextAnimation.Program.DisplaySlowString("You feel like the bush is trying to hit you, despite only being a bush.\n");
         return 0;
     }
 

@@ -17,7 +17,8 @@ public class Ghost : Monster
         stats["cha"] = 17;
 
         //Define its basic stats
-        this.HP = 25;   //these aren't real
+        this.maxHP = 25;   //these aren't real
+        currentHP = maxHP;
         this.XP = 150;
         this.AC = 11;
         this.ATTACK_WEIGHT = 100;
@@ -26,7 +27,7 @@ public class Ghost : Monster
     public override int AttackRoll()
     {
         //Never hits
-        TextAnimation.Program.DisplaySlowString("The ghost attempts to punch your face!");
+        TextAnimation.Program.DisplaySlowString("The ghost attempts to punch your face!\n");
         return 0;
     }
 

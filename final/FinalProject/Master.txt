@@ -120,6 +120,8 @@ Ideas:
 - Make Menu into a class
 - Enemies hidden unless run into or looked for (opportunity attack)
 - Crits and crit misses
+- Ability to move cursor to choose from menu options
+- Merge TextAnimations into TextUtils
 -Enemies:
   - Gublins
   - Ghools
@@ -138,18 +140,19 @@ To Do:
 
 ====================================================
  - Flavor text format for cell description       [ ]
- - Figure out world generation                   [ ]
-    - Guaranteed Cell Spawns <?>                 [ ]
- - Ability for fileHandler to parse out 
-   description text block                        [ ]
- - Ability for fileHandler to read from a 
-   different folder                              [ ]
+ - Figure out world generation                   [x]
+    - Guaranteed Cell Spawns <?>                 [x]
  - Ability for fileHandler to find files <?>     [ ]
- - Fix position of cells                         [ ]
- - replace fixed indeces w/ varsiables           [ ]
- - Replace file reading in world w/ lists in
-   classes<?>                                    [ ]
+ - Fix position of cells                         [x]
+ - Replace fixed indeces w/ varsiables           [x]
+ - Clean up displays                             [ ]
  - Make sure spawnChances are between 0-100      [ ]
+ - Add ability for player to flee/ heal          [ ]
+ - Add variety to display (not just slow txt)    [ ]
+ - Ability to save and load to/from json         [ ]
+ - Variety to flavor text in combat              [ ]
+ - Find out what is breaking the first input     [ ]
+
 
 ====================================================
 Questions:

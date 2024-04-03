@@ -16,7 +16,8 @@ public class Goblin:Monster
         stats["cha"] = 8;
 
         //Define its basic stats
-        this.HP = 7;
+        this.maxHP = 7;
+        currentHP = maxHP;
         this.XP = 50;
         this.AC = 15;
         this.ATTACK_WEIGHT = 100;
@@ -24,7 +25,7 @@ public class Goblin:Monster
 
     public override int AttackRoll()
     {
-        TextAnimation.Program.DisplaySlowString("The wicked goblin tries to stab you!");
+        TextAnimation.Program.DisplaySlowString("The wicked goblin tries to stab you!\n");
         return base.AttackRoll() + 4;
     }
 

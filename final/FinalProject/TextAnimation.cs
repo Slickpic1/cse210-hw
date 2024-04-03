@@ -9,4 +9,9 @@ class Program
             Thread.Sleep(25);
         }
     }
+
+    static public void DisplaySpinChar()
+    {
+        
+    }
 }

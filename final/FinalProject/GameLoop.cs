@@ -1,14 +1,17 @@
+using TextAnimation;
 namespace Adventure_Qwest;
 public class GameLoop
 {
     public GameLoop()
     {
-        bool stillPlaying = true;
+        Console.Clear();
+
+        bool isStillPlaying = true;
 
         //Describe the cell we are in for the first time
         Program.player.Look("around");
 
-        while (stillPlaying)  //maybe change this to whether the player is alive or not?
+        while (Program.player.IsAlive() && isStillPlaying)  //maybe change this to whether the player is alive or not?
         {
             //Update current position with that of the players
             int[] position = {Program.player.position[0],Program.player.position[1]};
@@ -20,7 +23,7 @@ public class GameLoop
             }
 
             //Ask player what they would like to do
-            Console.Write("What would you like to do? ");
+            TextAnimation.Program.DisplaySlowString("What would you like to do? ");
             string userInput = Console.ReadLine();
             string[] inputChoices = userInput.Split(" ");
 
@@ -41,8 +44,12 @@ public class GameLoop
                 case "search":
                     break;
 
+                case "check health":
+
+                    break;
+
                 case "quit":
-                    stillPlaying = false;
+                    isStillPlaying = false;
                     break;
 
                 //Default is failed input

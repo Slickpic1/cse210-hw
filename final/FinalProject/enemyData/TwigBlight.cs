@@ -17,7 +17,8 @@ public class TwigBlight:Monster
         stats["cha"] = 3;
 
         //Define its basic stats
-        this.HP = 4;
+        this.maxHP = 4;
+        currentHP = maxHP;
         this.XP = 25;
         this.AC = 13;
         this.ATTACK_WEIGHT = 100;
@@ -26,7 +27,7 @@ public class TwigBlight:Monster
 
     public override int AttackRoll()
     {
-        TextAnimation.Program.DisplaySlowString("The little blight tries to nite your ankles!");
+        TextAnimation.Program.DisplaySlowString("The little blight tries to bite your ankles!\n");
         return base.AttackRoll() + 3;
     }
 

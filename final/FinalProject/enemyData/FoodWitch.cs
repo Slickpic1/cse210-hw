@@ -16,7 +16,8 @@ public class FoodWitch : Monster
         stats["cha"] = 18;
 
         //Define its basic stats
-        this.HP = 25;
+        this.maxHP = 25;
+        currentHP = maxHP;
         this.XP = 100;
         this.AC = 12;
         this.ATTACK_WEIGHT = 100;
@@ -24,7 +25,7 @@ public class FoodWitch : Monster
 
     public override int AttackRoll()
     {
-        TextAnimation.Program.DisplaySlowString("The witch conjures a coconut and tries to throw it at you!");
+        TextAnimation.Program.DisplaySlowString("The witch conjures a coconut and tries to throw it at you!\n");
         return base.AttackRoll() + 4;
     }
 

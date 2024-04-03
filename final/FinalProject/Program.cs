@@ -1,5 +1,5 @@
 
-#define DEBUG
+//#define DEBUG
 
 using System;
 using System.Diagnostics;
@@ -7,12 +7,12 @@ using System.Diagnostics;
 namespace Adventure_Qwest;
 class Program
 {
-    static public World gameWorld;  //will this be readable by all classes?
-    static public Player player = new Player();//Generate new player
+    static public World gameWorld;
+    static public Player player = new Player();  //Generate new player
 
     static void Main(string[] args)
     {
-        bool testing = true;
+        bool testing = false;
         
         Debug.WriteLine($"Debugging mode is running!");
         
@@ -27,10 +27,12 @@ class Program
             bool choosingOptions = true;
             while(choosingOptions)
             {
+                Console.Clear();
                 DisplayMenu();
                 choosingOptions = GetMenuChoice();
             }
             PlayGame();
+            DisplayEndGame();
         }
     }
 
@@ -44,7 +46,7 @@ class Program
         Console.WriteLine("  3. Quit");
     }
 
-    static bool GetMenuChoice()
+    static bool GetMenuChoice()  //maybe make this the loop instead of in main?
     {
         Console.Write("What would you like to do? ");
         string userInput = Console.ReadLine();
@@ -102,5 +104,11 @@ class Program
     {
         // Run through our main game loop
         GameLoop gameLoop = new GameLoop();
+    }
+
+    static void DisplayEndGame()
+    {
+        TextAnimation.Program.DisplaySlowString("Thanks for playing!\n");
+        TextAnimation.Program.DisplaySlowString($"Your score was {player.GetScore()}.");
     }
 }

@@ -16,7 +16,8 @@ public class Bear: Monster
         stats["cha"] = 7;
 
         //Define its basic stats
-        this.HP = 34;
+        this.maxHP = 34;
+        currentHP = maxHP;
         this.XP = 200;
         this.AC = 11;
         this.ATTACK_WEIGHT = 100;
@@ -26,7 +27,7 @@ public class Bear: Monster
 
     public override int AttackRoll()
     {
-        TextAnimation.Program.DisplaySlowString("The bear tries to bite you!");
+        TextAnimation.Program.DisplaySlowString("The bear tries to bite you!\n");
         return base.AttackRoll() + (stats["str"]-10)/2 + 5;
     }
 
