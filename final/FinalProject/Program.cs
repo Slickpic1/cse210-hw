@@ -1,11 +1,8 @@
 
-//#define DEBUG
+#define DEBUG
 
 using System;
 using System.Diagnostics;
-
-//#Const DEBUG = true;
-
 
 namespace Adventure_Qwest;
 class Program
@@ -15,7 +12,9 @@ class Program
 
     static void Main(string[] args)
     {
-        bool testing = false;
+        bool testing = true;
+        
+        Debug.WriteLine($"Debugging mode is running!");
         
         if (testing)
         {

@@ -15,16 +15,16 @@ Basic:
     - Ability to walk to any cell not
       impassable                         [x]
 
-  - Enemies                              [ ]
+  - Enemies                              [x]
     - Ability to spawn                   [x]
-    - Ability to attack                  [ ]
-    - Ability to die                     [ ]
+    - Ability to attack                  [x]
+    - Ability to die                     [x]
     - Some variety of enemies            [x]
 
   - Basic combat                         [ ]
-    - Turn based combat (player starts)  [ ]
+    - Turn based combat (player starts)  [x]
     - Different attack types from player [ ]
-    - Action choice menu                 [ ]
+    - Action choice menu                 [x]
 
   - Basic error handling                 [ ]
     - Wrong inputs dont break prgrm      [ ]

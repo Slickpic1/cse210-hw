@@ -6,10 +6,11 @@ public class Test
     {
         Console.Clear();
         Program.GenerateWorld();
-        testWorld = Program.gameWorld;  //does this do what i need it to?
+        testWorld = Program.gameWorld;  //does this do what i need it to? (y)
         TestCellDisplay();
         TestWorldGeneration();
         TestPlayerMovement();
+        TestCombatLoop();
     }
     private void TestTxtFileReader()
     {
@@ -122,5 +123,18 @@ public class Test
             testPassed = false;
         }
         return testPassed;
+    }
+
+    private bool TestCombatLoop()
+    {
+        //Create new monster and player for combat loop
+        Zombie zombie = new Zombie();
+        Player player = new Player();
+
+        //Run combat loop
+        CombatLoop combatLoop = new CombatLoop(zombie);
+
+        //This will only return if combat loop successfuly ends
+        return true;
     }
 }

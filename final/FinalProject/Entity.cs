@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TextAnimation;
 using Dice;
 
 namespace Adventure_Qwest;
@@ -10,9 +11,11 @@ public class Entity  //make abstract?
     //         the health, stats, inventory, equipment, and related functions
     ///////////////////////////////////////////////////////////////////////////
     
+    protected int maxHP;
     protected int HP;
     protected int AC;
     protected int ATK_bonus;
+    protected bool canFlee;
     protected Dictionary<string,int> stats = new Dictionary<string, int>()
     {
         {"str",10},
@@ -42,23 +45,36 @@ public class Entity  //make abstract?
     {
         return "";
     }
-    public virtual void TakeDamage(int attack, int damage) //individual notifications for damage taken or not?
+
+    public virtual void Attack()
     {
+
+    }
+    public virtual int GetHP()  //maybe rename
+    {
+        return HP;
+    }
+    public virtual bool TakeDamage(int attack, int damage) //individual notifications for damage taken or not?
+    {
+        bool hit = false;
+
         //Check to see if attack hits
         if (attack >= AC)
         {
             HP -= damage;
+            hit = true;
         }
         
         if (HP <= 0)
         {
             isAlive = false;  //need to display if the creature (or player) has died
         }
+        return hit;
     }
 
     public virtual int AttackRoll()
-    {
-        return -1;
+    {   //Could put flavor text here for specific attacks
+        return Dice.Dice.RollD20();
     }
 
     public virtual int DamageRoll()

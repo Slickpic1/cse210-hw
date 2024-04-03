@@ -1,11 +1,20 @@
 namespace Adventure_Qwest;
 public class Player : Entity
 {
-    public bool canFlee;
+    public int proficiencyBonus;
+    private int score;               //maybe make private and have adds and displays?
     public Player() : base()
     {
         position[0] = 1;  //Better way to do this?
         position[1] = 1;
+
+        //Set player stats
+        stats["str"] = 15;
+
+        //Set players base HP and AC
+        AC = 14;
+        HP = 25;
+        proficiencyBonus = 2;
     }
 
     public override string Action()
@@ -54,12 +63,15 @@ public class Player : Entity
 
     public override int AttackRoll()
     {
-        return base.AttackRoll();
+        int attack = Dice.Dice.RollD20() + (stats["str"]-10)/2 + proficiencyBonus;  //double check this returns proper damage
+        return attack;
     }
 
     public override int DamageRoll()
     {
-        return base.DamageRoll();
+        //For the basic code, we will allow the player to use a sword
+        int damage = Dice.Dice.RollD6() + (stats["str"]-10)/2;  
+        return damage;
     }
     public void Move(string direction)
     {
@@ -124,5 +136,15 @@ public class Player : Entity
                 break;
         }
         
+    }
+    
+    public void AddXP(int enemyXP)
+    {
+        score += enemyXP;
+    }
+
+    public int GetScore()
+    {
+        return score;
     }
 }

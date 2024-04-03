@@ -8,7 +8,7 @@ public class GameLoop
         //Describe the cell we are in for the first time
         Program.player.Look("around");
 
-        while (stillPlaying)
+        while (stillPlaying)  //maybe change this to whether the player is alive or not?
         {
             //Update current position with that of the players
             int[] position = {Program.player.position[0],Program.player.position[1]};
@@ -18,7 +18,6 @@ public class GameLoop
             {
                 CombatLoop combatLoop = new CombatLoop(Program.gameWorld.world[position[0],position[1]].monsters[0]);
             }
-
 
             //Ask player what they would like to do
             Console.Write("What would you like to do? ");

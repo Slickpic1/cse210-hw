@@ -7,7 +7,7 @@ public class Dice
         return rand.Next(1,3);
     }
 
-    public int RollD4()
+    static public int RollD4()
     {
         return rand.Next(1,5);
     }

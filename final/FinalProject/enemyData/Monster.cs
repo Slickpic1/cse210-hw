@@ -6,12 +6,12 @@ public class Monster : Entity
     protected string name;  
     protected string type;
     protected string description;
+    protected int XP;
 
     // Weights for the different actions
     protected int ATTACK_WEIGHT;
     protected int ACT_WEIGHT;
     protected int USE_ITEM_WEIGHT;
-    protected int XP;
     public Monster(){}
     public Monster(int[] position) : base(position)
     {}
@@ -38,5 +38,10 @@ public class Monster : Entity
     public string GetName()
     {
         return name;
+    }
+
+    public virtual int GetXP()
+    {
+        return XP;
     }
 }
