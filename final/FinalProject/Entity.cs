@@ -34,8 +34,15 @@ public class Entity  //make abstract?
     {
         this.position = position;
     }
-
-    public virtual void TakeDamage(int attack, int damage)
+    public bool IsAlive()
+    {
+        return isAlive;
+    }
+    public virtual string Action()
+    {
+        return "";
+    }
+    public virtual void TakeDamage(int attack, int damage) //individual notifications for damage taken or not?
     {
         //Check to see if attack hits
         if (attack >= AC)
@@ -45,7 +52,7 @@ public class Entity  //make abstract?
         
         if (HP <= 0)
         {
-            isAlive = false;
+            isAlive = false;  //need to display if the creature (or player) has died
         }
     }
 

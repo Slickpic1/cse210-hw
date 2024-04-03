@@ -11,6 +11,8 @@ namespace Adventure_Qwest;
 class Program
 {
     static public World gameWorld;  //will this be readable by all classes?
+    static public Player player = new Player();//Generate new player
+
     static void Main(string[] args)
     {
         bool testing = false;
@@ -99,45 +101,7 @@ class Program
 
     static void PlayGame()
     {
-        //Generate new player
-        Player player = new Player();
-        bool stillPlaying = true;
-
-        //Describe the cell we are in
-        player.Look("around");
-
-        while (stillPlaying)
-        {
-            //Ask player what they would like to do
-            Console.Write("What would you like to do? ");
-            string userInput = Console.ReadLine();
-            string[] inputChoices = userInput.Split(" ");
-
-            switch (inputChoices[0])
-            {
-                //Look in a direction
-                case "look":
-                    player.Look(inputChoices[1]);
-                    break;
-
-                //Move player
-                case "move":
-                    player.Move(inputChoices[1]);
-                    player.Look("around");
-                    break;
-
-                //Search around area for items
-                case "search":
-                    break;
-
-                case "quit":
-                    stillPlaying = false;
-                    break;
-
-                //Default is failed input
-                default:
-                    break;
-            }
-        }
+        // Run through our main game loop
+        GameLoop gameLoop = new GameLoop();
     }
 }

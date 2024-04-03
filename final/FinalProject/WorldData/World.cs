@@ -47,7 +47,6 @@ public class World
         GenerateWorldBorder(size);
         GenerateWorldInterior(size);
         GenerateWorldSpawn();
-        SpawnEnemies();
     }
 
     private void GenerateWorldBorder(int size)

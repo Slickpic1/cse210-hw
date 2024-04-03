@@ -118,6 +118,8 @@ Ideas:
 - Wrap around conditions for the world
 - Standardized/ multioptional user inputs
 - Make Menu into a class
+- Enemies hidden unless run into or looked for (opportunity attack)
+- Crits and crit misses
 -Enemies:
   - Gublins
   - Ghools
@@ -281,6 +283,15 @@ Zombie [Monster]:
 --------------------------
 Vars:
   HP = 22
+
+
+--------------------------
+Combat Loop:
+--------------------------
+Vars:
+  private Monster
+
+Funcs:
 
 
 --------------------------

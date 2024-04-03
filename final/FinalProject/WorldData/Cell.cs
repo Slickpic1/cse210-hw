@@ -31,7 +31,7 @@ public class Cell
 
     public int enemySpawnChance = -1; //default
     protected int treasureSpawnChance = -1;  //default
-    protected List<Monster> monsters = new List<Monster>();
+    public List<Monster> monsters = new List<Monster>();  //maybe make protected?
     //protected List<Item> items = new List<Item>();
     //protected List<Item> treasure = new List<Item>();
 
