@@ -1,8 +1,11 @@
+using System.Diagnostics;
+
 namespace Adventure_Qwest;
 public class Player : Entity
 {
     public int proficiencyBonus;
     private int score;               //maybe make private and have adds and displays?
+    private string previousDirection;
     public Player() : base()
     {
         position[0] = 1;  //Better way to do this?
@@ -80,6 +83,12 @@ public class Player : Entity
         int xPos = position[1];
         int yPos = position[0];
         int[] newPosition = {yPos,xPos};
+        previousDirection = direction;
+
+        //#Debug Stuff
+        Debug.WriteLine($"Position: {xPos},{yPos}");
+        Debug.WriteLine($"Previous Direction: {previousDirection}");
+
         switch (direction)
         {
             case "north":
@@ -96,6 +105,10 @@ public class Player : Entity
 
             case "west":
                 newPosition[1] -= 1;
+                break;
+
+            case "back":
+                Move(previousDirection);
                 break;
         }
 
@@ -140,7 +153,7 @@ public class Player : Entity
     }
 
     public override void DisplayHealthStatus()
-    {
+    {   TextAnimation.Program.DisplaySlowString("You are");
         base.DisplayHealthStatus();
     }
 

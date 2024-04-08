@@ -31,6 +31,7 @@ public class CombatLoop
                     {
                         TextAnimation.Program.DisplaySlowString("And you hit!\n");
                         TextAnimation.Program.DisplaySlowString($"You deal {playerDamageRoll} points of damage!\n");
+                        monster.DisplayHealthStatus();
                     }
                     else
                     {
@@ -39,6 +40,8 @@ public class CombatLoop
                     break;
 
                 case "flee":
+                    TextAnimation.Program.DisplaySlowString("You flee from combat!\n");
+                    Program.player.Move("back");
                     break;
             }
 
@@ -68,6 +71,7 @@ public class CombatLoop
                     if (hit)
                     {
                         TextAnimation.Program.DisplaySlowString($"Ouch! The {monster.GetName()} hits you for {monsterDamageRoll} points of damage!\n");
+                        Program.player.DisplayHealthStatus();
                     }
                     else
                     {

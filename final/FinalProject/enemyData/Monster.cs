@@ -44,4 +44,10 @@ public class Monster : Entity
     {
         return XP;
     }
+
+    public override void DisplayHealthStatus()
+    {
+        TextAnimation.Program.DisplaySlowString($"The {name}");
+        base.DisplayHealthStatus();
+    }
 }

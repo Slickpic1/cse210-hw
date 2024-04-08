@@ -122,6 +122,7 @@ Ideas:
 - Crits and crit misses
 - Ability to move cursor to choose from menu options
 - Merge TextAnimations into TextUtils
+- Ascii map that you discover as you move (and which displays as you move)
 -Enemies:
   - Gublins
   - Ghools

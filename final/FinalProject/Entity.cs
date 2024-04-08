@@ -72,6 +72,9 @@ public class Entity  //make abstract?
         return hit;
     }
 
+    //List of basic actions
+
+
     public virtual int AttackRoll()
     {   //Could put flavor text here for specific attacks
         return Dice.Dice.RollD20();
@@ -84,6 +87,28 @@ public class Entity  //make abstract?
 
     public virtual void DisplayHealthStatus()
     {
-        
+        //If health is full, status is "at full health"
+        if(currentHP == maxHP)
+        {
+            TextAnimation.Program.DisplaySlowString(" at full health.\n");
+        }
+
+        //Good condition (or sturdy)
+        else if(currentHP >= maxHP*3/4)
+        {
+            TextAnimation.Program.DisplaySlowString(" in good condition.\n");
+        }
+
+        //Moderate condition
+        else if(currentHP >= maxHP*1/2)
+        {
+            TextAnimation.Program.DisplaySlowString(" in moderate condition.\n");
+        }
+
+        //Poor condition
+        else if(currentHP >= maxHP*1/4)
+        {
+            TextAnimation.Program.DisplaySlowString(" in poor condition.\n");
+        }
     }
 }
