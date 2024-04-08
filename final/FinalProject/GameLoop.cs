@@ -23,6 +23,7 @@ public class GameLoop
             }
 
             //Ask player what they would like to do
+            Console.Write("[Exploring] ");  //used to differentiate between combat and exploring
             TextAnimation.Program.DisplaySlowString("What would you like to do? ");
             string userInput = Console.ReadLine();
             string[] inputChoices = userInput.Split(" ");
@@ -44,8 +45,12 @@ public class GameLoop
                 case "search":
                     break;
 
-                case "check health":
-
+                case "check":
+                    if(inputChoices[1] == "health")
+                    {
+                        Program.player.DisplayHealthStatus();
+                    }
+                    
                     break;
 
                 case "quit":

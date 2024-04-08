@@ -46,10 +46,8 @@ public class Entity  //make abstract?
         return "";
     }
 
-    public virtual void Attack()
-    {
-
-    }
+    public virtual void Attack(){}
+    
     public virtual int GetCurrentHP()  //maybe rename
     {
         return currentHP;

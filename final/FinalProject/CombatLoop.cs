@@ -4,15 +4,15 @@ using System.Diagnostics;
 namespace Adventure_Qwest;
 public class CombatLoop
 {
-    //For now, player starts, then enemy, then player, until one is dead
+    //For now, player starts, then enemy, then player, until one is dead (or flees)
     public CombatLoop(Monster monster)
-    {
-        while(Program.player.IsAlive() && monster.IsAlive())
+    {   bool inCombat = true;
+        while(Program.player.IsAlive() && monster.IsAlive() && inCombat)   //might not need in combat
         {
             //Starting with player
             Debug.WriteLine("Players Turn");
             Debug.WriteLine($"Player health: {Program.player.GetCurrentHP()}");
-            string playerAction = Program.player.Action();
+            string playerAction = Program.player.Action();   //Maybe replace this with actual text block
             switch (playerAction)
             {
                 
@@ -31,7 +31,11 @@ public class CombatLoop
                     {
                         TextAnimation.Program.DisplaySlowString("And you hit!\n");
                         TextAnimation.Program.DisplaySlowString($"You deal {playerDamageRoll} points of damage!\n");
-                        monster.DisplayHealthStatus();
+
+                        if (monster.IsAlive())
+                        {
+                            monster.DisplayHealthStatus();
+                        }
                     }
                     else
                     {
@@ -42,7 +46,8 @@ public class CombatLoop
                 case "flee":
                     TextAnimation.Program.DisplaySlowString("You flee from combat!\n");
                     Program.player.Move("back");
-                    break;
+                    inCombat = false;  //might be able to remove this
+                    return;
             }
 
             //Check to see if monster is still alive or not

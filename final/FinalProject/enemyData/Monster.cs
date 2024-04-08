@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 namespace Adventure_Qwest;
+
 public class Monster : Entity
 {
-    //private string type;  //implement later
     protected string name;  
     protected string type;
     protected string description;
@@ -12,6 +12,8 @@ public class Monster : Entity
     protected int ATTACK_WEIGHT;
     protected int ACT_WEIGHT;
     protected int USE_ITEM_WEIGHT;
+
+
     public Monster(){}
     public Monster(int[] position) : base(position)
     {}
@@ -35,6 +37,8 @@ public class Monster : Entity
             return "use item";
         }
     }
+
+    //public override 
     public string GetName()
     {
         return name;
@@ -47,7 +51,7 @@ public class Monster : Entity
 
     public override void DisplayHealthStatus()
     {
-        TextAnimation.Program.DisplaySlowString($"The {name}");
+        TextAnimation.Program.DisplaySlowString($"The {name} is");
         base.DisplayHealthStatus();
     }
 }

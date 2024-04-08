@@ -74,6 +74,7 @@ class Program
     public static void GenerateWorld()
     {
         //Ask player what size world they would like and gen world based on that
+        Console.Clear();
         Console.WriteLine("Select a world size: ");
         Console.WriteLine("  1. Small");
         Console.WriteLine("  2. Medium");

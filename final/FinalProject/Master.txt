@@ -21,9 +21,9 @@ Basic:
     - Ability to die                     [x]
     - Some variety of enemies            [x]
 
-  - Basic combat                         [ ]
+  - Basic combat                         [x]
     - Turn based combat (player starts)  [x]
-    - Different attack types from player [ ]
+    - Different attack types from player [\]
     - Action choice menu                 [x]
 
   - Basic error handling                 [ ]
@@ -147,8 +147,8 @@ To Do:
  - Fix position of cells                         [x]
  - Replace fixed indeces w/ varsiables           [x]
  - Clean up displays                             [ ]
- - Make sure spawnChances are between 0-100      [ ]
- - Add ability for player to flee/ heal          [ ]
+ - Make sure spawnChances are between 0-100      [x]
+ - Add ability for player to flee/ heal          [x]
  - Add variety to display (not just slow txt)    [ ]
  - Ability to save and load to/from json         [ ]
  - Variety to flavor text in combat              [ ]

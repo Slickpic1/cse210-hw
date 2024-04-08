@@ -4,7 +4,7 @@ namespace Adventure_Qwest;
 public class Player : Entity
 {
     public int proficiencyBonus;
-    private int score;               //maybe make private and have adds and displays?
+    private int score;               
     private string previousDirection;
     public Player() : base()
     {
@@ -31,7 +31,7 @@ public class Player : Entity
         Console.WriteLine("");
         Console.WriteLine("      [2]. Act                     [4]. Item     ");
         Console.WriteLine("=====================================================\n");
-        Console.Write("  What would you like to do? ");
+        Console.Write("[Combat] What would you like to do? ");
 
         //Read player input and run appropriate function
         string userInput = Console.ReadLine();
@@ -83,7 +83,6 @@ public class Player : Entity
         int xPos = position[1];
         int yPos = position[0];
         int[] newPosition = {yPos,xPos};
-        previousDirection = direction;
 
         //#Debug Stuff
         Debug.WriteLine($"Position: {xPos},{yPos}");
@@ -93,18 +92,22 @@ public class Player : Entity
         {
             case "north":
                 newPosition[0] += 1;
+                previousDirection = direction;
                 break;
 
             case "south":
                 newPosition[0] -= 1;
+                previousDirection = direction;
                 break;
 
             case "east":
                 newPosition[1] += 1;
+                previousDirection = direction;
                 break;
 
             case "west":
                 newPosition[1] -= 1;
+                previousDirection = direction;
                 break;
 
             case "back":
