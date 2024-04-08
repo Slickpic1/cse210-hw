@@ -45,12 +45,17 @@ public class GameLoop
                 case "search":
                     break;
 
+                //Check 
                 case "check":
                     if(inputChoices[1] == "health")
                     {
                         Program.player.DisplayHealthStatus();
                     }
                     
+                    break;
+
+                case "help":
+                    //Display list of options for the player
                     break;
 
                 case "quit":
