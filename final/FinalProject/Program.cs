@@ -3,6 +3,7 @@
 
 using System;
 using System.Diagnostics;
+using TextUtils;
 
 namespace Adventure_Qwest;
 class Program
@@ -52,10 +53,20 @@ class Program
         string userInput = Console.ReadLine();
         bool running = true;
 
+        if (userInput.Length > 1)
+        {
+            userInput = userInput.ToLower();
+        }
+
         switch (userInput)
         {
             //New game
             case "1":
+                GenerateWorld();
+                running = false;
+                break;
+
+            case "new game":
                 GenerateWorld();
                 running = false;
                 break;
@@ -82,6 +93,12 @@ class Program
         Console.Write("Enter size: ");
         string userInput = Console.ReadLine();
 
+        //Check user input to see if it is a number or uppercase
+        if (userInput.Length > 1)
+        {
+            userInput = userInput.ToLower();
+        }
+
         string size = "";  //overwrite
         switch (userInput)
         {
@@ -90,11 +107,23 @@ class Program
                 size = "small";
                 break;
 
+            case "1":
+                size = "small";
+                break;
+
             case "medium":
                 size = "medium";
                 break;
 
+            case "2":
+                size = "medium";
+                break;
+
             case "large":
+                size = "large";
+                break;
+
+            case "3":
                 size = "large";
                 break;
         }

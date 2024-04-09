@@ -111,7 +111,7 @@ public class World
                 }
 
                 //Hostile cell roll
-                else if(spawnChance <= 90)
+                else if(spawnChance <= 95)
                 {
                     intCell = new HostileCell(position);
                 }

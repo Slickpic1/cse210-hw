@@ -129,10 +129,12 @@ public class Test
     {
         //Create new monster and player for combat loop
         Zombie zombie = new Zombie();
+        FoodWitch foodWitch = new FoodWitch();
+        Shrub shrub = new Shrub();
         Player player = new Player();
 
         //Run combat loop
-        CombatLoop combatLoop = new CombatLoop(zombie);
+        CombatLoop combatLoop = new CombatLoop(foodWitch);
 
         //This will only return if combat loop successfuly ends
         return true;

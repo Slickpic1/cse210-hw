@@ -3,6 +3,17 @@ using System.Collections.Generic;
 
 class Program
 {
+    static public void TestFunc()
+    {
+        string numberString = "1";
+        string wordString = "fun";
+
+        Console.WriteLine($"Length of numberString: {numberString.Length}");
+        Console.WriteLine($"Length of wordString: {wordString.Length}");
+    }
+    
+
+
     static void Main(string[] args)
     {   
         int math = (int) 3/2;
@@ -38,6 +49,8 @@ class Program
 
         monsterDirectory.Add("beasts",beasts);
         monsterDirectory.Add("fiends",fiends);
+
+        TestFunc();
     }
 }
 public class Monster

@@ -123,6 +123,7 @@ Ideas:
 - Ability to move cursor to choose from menu options
 - Merge TextAnimations into TextUtils
 - Ascii map that you discover as you move (and which displays as you move)
+- Add 'still' if the condition hasn't changed since last time checked
 -Enemies:
   - Gublins
   - Ghools

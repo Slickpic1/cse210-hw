@@ -77,7 +77,7 @@ public class Cell
             }
             else
             {
-                displayString += $"You also see a dead {monsters[0].GetName()}\n";
+                displayString += $"You also see a dead {monsters[0].GetName()}.\n";
             }
         }
         TextAnimation.Program.DisplaySlowString(displayString);

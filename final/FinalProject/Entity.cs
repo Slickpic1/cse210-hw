@@ -108,5 +108,11 @@ public class Entity  //make abstract?
         {
             TextAnimation.Program.DisplaySlowString(" in poor condition.\n");
         }
+
+        //Very poor condition
+        else
+        {
+            TextAnimation.Program.DisplaySlowString(" near death.\n");
+        }
     }
 }

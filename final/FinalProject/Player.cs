@@ -15,7 +15,7 @@ public class Player : Entity
         stats["str"] = 15;
 
         //Set players base HP and AC
-        AC = 14;
+        AC = 15;
         maxHP = 25;
         currentHP = maxHP;
         proficiencyBonus = 2;
@@ -92,22 +92,22 @@ public class Player : Entity
         {
             case "north":
                 newPosition[0] += 1;
-                previousDirection = direction;
+                previousDirection = "south";
                 break;
 
             case "south":
                 newPosition[0] -= 1;
-                previousDirection = direction;
+                previousDirection = "north";
                 break;
 
             case "east":
                 newPosition[1] += 1;
-                previousDirection = direction;
+                previousDirection = "west";
                 break;
 
             case "west":
                 newPosition[1] -= 1;
-                previousDirection = direction;
+                previousDirection = "east";
                 break;
 
             case "back":
@@ -160,10 +160,23 @@ public class Player : Entity
         base.DisplayHealthStatus();
     }
 
+    public void Heal(int HP)
+    {   
+        if (HP > maxHP)
+        {
+            currentHP = maxHP;
+        }
+        else
+        {
+            currentHP += HP;
+        }
+    }
+
     public void AddXP(int enemyXP)
     {
         score += enemyXP;
     }
+
     public int GetScore()
     {
         return score;

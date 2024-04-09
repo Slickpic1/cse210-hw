@@ -22,6 +22,13 @@ public class GameLoop
                 CombatLoop combatLoop = new CombatLoop(Program.gameWorld.world[position[0],position[1]].monsters[0]);
             }
 
+            //Check to see if player is still alive after combat
+            if (!Program.player.IsAlive())
+            {
+                //If not, break loop.
+                return;
+            }
+
             //Ask player what they would like to do
             Console.Write("[Exploring] ");  //used to differentiate between combat and exploring
             TextAnimation.Program.DisplaySlowString("What would you like to do? ");
@@ -56,6 +63,13 @@ public class GameLoop
 
                 case "help":
                     //Display list of options for the player
+                    break;
+
+                case "rest":
+                    //Heal player to full (for now)
+                    TextAnimation.Program.DisplaySlowString($"You rest for a few hours.");
+                    Program.player.Heal(1000);
+                    Program.player.DisplayHealthStatus();
                     break;
 
                 case "quit":

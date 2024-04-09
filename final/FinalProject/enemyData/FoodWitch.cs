@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace Adventure_Qwest;
 public class FoodWitch : Monster
 {

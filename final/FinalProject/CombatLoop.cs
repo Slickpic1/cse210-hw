@@ -69,14 +69,20 @@ public class CombatLoop
                 case "attack":
                     //Calculate the attack roll from the monster
                     int monsterAttackRoll = monster.AttackRoll();
+                    Debug.WriteLine($"Monster Attack Roll: {monsterAttackRoll}");
                     int monsterDamageRoll = monster.DamageRoll();
+                    Debug.WriteLine($"Monster Dmg Roll: {monsterDamageRoll}");
 
                     //Attempt to hit player
                     bool hit = Program.player.TakeDamage(monsterAttackRoll,monsterDamageRoll);
                     if (hit)
                     {
                         TextAnimation.Program.DisplaySlowString($"Ouch! The {monster.GetName()} hits you for {monsterDamageRoll} points of damage!\n");
-                        Program.player.DisplayHealthStatus();
+                        if (Program.player.IsAlive())
+                        {
+                            Program.player.DisplayHealthStatus();
+                        }
+                        
                     }
                     else
                     {
