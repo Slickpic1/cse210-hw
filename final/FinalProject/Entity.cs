@@ -14,6 +14,8 @@ public class Entity  //make abstract?
     protected int maxHP;
     protected int currentHP;
     protected int AC;
+    protected List<string> attackDescriptions;
+    protected List<string> damageDescriptions;
     protected int ATK_bonus;
     protected bool canFlee;
     protected Dictionary<string,int> stats = new Dictionary<string, int>()
@@ -45,7 +47,6 @@ public class Entity  //make abstract?
     {
         return "";
     }
-
     public virtual void Attack(){}
     
     public virtual int GetCurrentHP()  //maybe rename

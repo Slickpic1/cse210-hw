@@ -68,7 +68,7 @@ public class GameLoop
                 case "rest":
                     //Heal player to full (for now)
                     TextAnimation.Program.DisplaySlowString($"You rest for a few hours.");
-                    Program.player.Heal(1000);
+                    Program.player.Heal(1000);  //this is temporary
                     Program.player.DisplayHealthStatus();
                     break;
 

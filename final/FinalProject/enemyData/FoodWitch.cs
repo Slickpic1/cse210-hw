@@ -35,4 +35,9 @@ public class FoodWitch : Monster
     {
         return Dice.Dice.RollD4() + 2;
     }
+
+    public override void DisplayAggroMessage()
+    {
+        TextAnimation.Program.DisplaySlowString("You spot a pile ")
+    }
 }

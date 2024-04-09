@@ -19,6 +19,12 @@ public class Player : Entity
         maxHP = 25;
         currentHP = maxHP;
         proficiencyBonus = 2;
+
+        //Initialize attackDesc list
+        attackDescriptions = new List<string>
+        {
+            ""
+        };
     }
 
     public override string Action()
@@ -67,7 +73,8 @@ public class Player : Entity
 
     public override int AttackRoll()
     {
-        int attack = Dice.Dice.RollD20() + (stats["str"]-10)/2 + proficiencyBonus;  //double check this returns proper damage
+        int attack = Dice.Dice.RollD20() + (stats["str"]-10)/2 + proficiencyBonus;  
+        TextAnimation.Program.DisplaySlowString("");
         return attack;
     }
 

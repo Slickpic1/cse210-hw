@@ -54,4 +54,6 @@ public class Monster : Entity
         TextAnimation.Program.DisplaySlowString($"The {name} is");
         base.DisplayHealthStatus();
     }
+
+    public virtual void DisplayAggroMessage(){}
 }

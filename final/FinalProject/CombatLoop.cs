@@ -12,10 +12,10 @@ public class CombatLoop
             //Starting with player
             Debug.WriteLine("Players Turn");
             Debug.WriteLine($"Player health: {Program.player.GetCurrentHP()}");
+
             string playerAction = Program.player.Action();   //Maybe replace this with actual text block
             switch (playerAction)
             {
-                
                 case "attack":
                     //Calculate the attack roll and damage roll of the player
                     int playerAttackRoll = Program.player.AttackRoll();
