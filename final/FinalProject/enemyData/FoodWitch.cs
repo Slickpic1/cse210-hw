@@ -38,6 +38,6 @@ public class FoodWitch : Monster
 
     public override void DisplayAggroMessage()
     {
-        TextAnimation.Program.DisplaySlowString("You spot a pile ")
+        TextAnimation.Program.DisplaySlowString("You spot a pile ");
     }
 }

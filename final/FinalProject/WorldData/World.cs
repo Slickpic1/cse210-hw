@@ -1,5 +1,3 @@
-using System.Diagnostics;
-using System.Drawing;
 namespace Adventure_Qwest;
 public class World
 {
@@ -13,43 +11,69 @@ public class World
 
     Random random = new Random();
     private int MOUNTAIN_INDEX = 0;
-    private int size = 11;             //if not zero, returns error with below function (not sure why)
-    public Cell[,] world;              //not sure if this is legal
-
+    private int size;             //if not zero, returns error with below function (not sure why)
+    private Cell[,] world;              
     public int GetSize()
     {
         return size;
     }
-    public World(string worldSize)
+
+    public World(){}
+
+    public void InitializeWorld()
     {
-        switch (worldSize)  //Maybe default to small?
+        GetWorldSizeInput();
+        GenerateWorldBorder();
+        GenerateWorldInterior();
+        GenerateWorldSpawn();
+    }
+
+    private void GetWorldSizeInput()
+    {
+        Console.Clear();
+        Console.WriteLine("Select a world size: ");
+        Console.WriteLine("  1. Small");
+        Console.WriteLine("  2. Medium");
+        Console.WriteLine("  3. Large");
+        Console.Write("Enter size: ");
+        string userInput = Console.ReadLine();
+
+        //Check user input to see if it is a number or uppercase
+        if (userInput.Length > 1)
         {
+            userInput = userInput.ToLower();
+        }
+
+        switch (userInput)
+        {
+            //Small
             case "small":
+                size = 11;
+                break;
+
+            case "1":
                 size = 11;
                 break;
 
             case "medium":
                 size = 21;
                 break;
-            
+
+            case "2":
+                size = 21;
+                break;
+
             case "large":
                 size = 31;
                 break;
 
-            default:
-                Console.WriteLine("Input not recognized");
+            case "3":
+                size = 31;
                 break;
         }
-
-        world = new Cell[size,size];   //Be careful here, im not sure how referencing and pointers work here
-
-        //Generate our world
-        GenerateWorldBorder(size);
-        GenerateWorldInterior(size);
-        GenerateWorldSpawn();
     }
 
-    private void GenerateWorldBorder(int size)
+    private void GenerateWorldBorder()
     {
         //Create a basic mountain type cell
         Cell mountain;
@@ -83,7 +107,7 @@ public class World
         } 
     }
 
-    private void GenerateWorldInterior(int size)
+    private void GenerateWorldInterior()
     {
         //Note: this algorithm is exceedingly basic. Very likely that it 
         //  creates some wild spawning conditions

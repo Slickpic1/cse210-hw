@@ -191,7 +191,7 @@ public class Player : Entity
 
     public void Death()
     {
-        TextAnimation.Program.DisplaySlowString("You have died!\n");
+        
         TextAnimation.Program.DisplaySlowString($"Your score is {score}\n");
     }
 }
